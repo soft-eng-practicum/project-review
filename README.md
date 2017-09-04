@@ -14,5 +14,6 @@ Team Members:
 	Matthew Coker: 
 		1. Team manager/Client liaison
 		2. Documentation Lead
+		3. Potato
 	Jerry Chambers
 		1. Testing Lead
