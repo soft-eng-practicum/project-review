@@ -16,3 +16,6 @@ Team Members:
 		2. Documentation Lead
 	Jerry Chambers
 		1. Testing Lead
+	Kevin Stevens
+		1. UI/UX Design
+		2. Data Modeler
