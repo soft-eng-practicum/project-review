@@ -20,4 +20,4 @@ Team Members:
 		1. UI/UX Design
 		2. Data Modeler
 	Janna Timmer
-		1. Code architecture/lead Programmer
+		1. Code architecture/Lead programmer
