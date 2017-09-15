@@ -13,11 +13,12 @@ Communication Tool:
 Team Members:
 	Matthew Coker: 
 		1. Team manager/Client liaison
-		2. Documentation Lead
 	Jerry Chambers
 		1. Testing Lead
 	Kevin Stevens
 		1. UI/UX Design
 		2. Data Modeler
 	Janna Timmer
+		1. Documentation Lead
+	Norman Soucie
 		1. Code architecture/Lead programmer
