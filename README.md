@@ -16,7 +16,7 @@
 * Discord itec-3870-fall-2017 Channel Invite https://discord.gg/xvFYPpQ
 
 #### Team Members:
-* Matthew Coker: 
+* Matthew Coker
 	* Team manager/Client liaison
 * Jerry Chambers
 	* Testing Lead
