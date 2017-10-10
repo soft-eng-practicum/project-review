@@ -49,20 +49,15 @@
 <body>
 <?php if (login_checker($mysqli) == true) : ?>
 	<?php echo "<h1>Welcome " . $_SESSION['firstname'] . "! You are logged in!</h1>";?>
+	
 	<?php if($_SESSION['s_code']==1){?>
-	
 	<h1>You are an admin</h1>
-		<?php if($_SESSION['firstname']=='Matthew'){?>
-			<h1> this guy is ok....</h1>
-		<?php }?>
 	<?php }?>
-	<?php if($_SESSION['s_code']==3){?>
 	
+	<?php if($_SESSION['s_code']==3){?>
 	<h1>You are an professor</h1>
-		<?php if($_SESSION['firstname']=='Matthew'){?>
-			<h1> this guy is ok....</h1>
-		<?php }?>
 	<?php }?>
+	
 
 	
 	<div class="col-md-6">
