@@ -11,9 +11,13 @@ if (isset($_POST['email']) && isset($_POST['pass']))
     
     if (login($email, $password, $mysqli) == true) 
 	{
-        	if($_SESSION['s_code']  == 0) 
+        	if($_SESSION['s_code']  == 0||$_SESSION['s_code']  == 2||$_SESSION['s_code']  == 4) 
 			{
-				header("Location: ../landing_test.php");
+				header("Location: ../splash.php");
+			}
+			elseif($_SESSION['s_code']  == 1||$_SESSION['s_code']  == 3||$_SESSION['s_code']  == 5) 
+			{
+				header("Location: ../splash.php");
 			}
     } 
 	else 
