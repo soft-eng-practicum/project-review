@@ -13,11 +13,11 @@ if (isset($_POST['email']) && isset($_POST['pass']))
 	{
         	if($_SESSION['s_code']  == 0||$_SESSION['s_code']  == 2||$_SESSION['s_code']  == 4) 
 			{
-				header("Location: ../splash.php");
+				header("Location: ../UserDash.php");
 			}
 			elseif($_SESSION['s_code']  == 1||$_SESSION['s_code']  == 3||$_SESSION['s_code']  == 5) 
 			{
-				header("Location: ../splash.php");
+				header("Location: ../UserDash.php");
 			}
     } 
 	else 
