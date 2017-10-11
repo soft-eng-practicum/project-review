@@ -24,7 +24,8 @@
 		$id2=$_POST['delete_id'];
 		$delete_stmt = $mysqli->query("DELETE FROM test WHERE id = '$id2'");
 	}
-	$stmt=$mysqli->query("SELECT * FROM user JOIN class WHERE user.user_id = class.student_id");
+	$stmt=$mysqli->query("SELECT * FROM user JOIN class JOIN course WHERE user.user_id = class.student_id AND class.course_id = course.course_id");
+	//$stm1t=$mysqli->query("SELECT * FROM class JOIN course WHERE class.student_id = ");
 	//$stmt=$mysqli->query("SELECT * FROM course_section");
 
 ?>
@@ -69,8 +70,10 @@
 	<?php if($_SESSION['s_code']==3){?>
 	<h1>You are an professor</h1>
 	<div class="col-md-6">
-			<table class="one">
+			<!--<table class="one">
+			
 				<tr>
+				
 					<td>
 						<strong>
 							ID
@@ -92,6 +95,7 @@
 						</strong>
 					</td>
 				</tr>
+				-->
 <?php
 				if($stmt->num_rows != 0)
 				{
@@ -101,10 +105,40 @@
 						$firstname = $rows['firstname'];
 						$lastname = $rows['lastname'];
 						$course_ID = $rows['course_id'];
+						$course_name = $rows['name'];
+						$semester = $rows['semester'];
+						$section = $rows['section'];
 						
 						echo "
 						
-						<tr>
+						<table>
+							<tr>
+							
+								<td>						
+									<a href = ./ClassDash.php?course='$course_ID'>$course_ID</a>
+								</td>
+								<td>
+									<a href = ./ClassDash.php?course='$course_ID'>$course_name</a>
+								</td>
+								<td>
+									<a href = ./ClassDash.php?course='$course_ID'>$semester</a>
+								</td>
+								<td>
+									<a href = ./ClassDash.php?course='$course_ID'>$section</a>
+								</td>
+							</tr>
+						</table>
+							";
+					}
+				}
+?>
+			<!--</table>
+	</div>
+	-->
+	
+	<?php }
+	//This is the area I took out from the table
+	/*
 							<td>
 								$user_id
 							</td>
@@ -114,16 +148,8 @@
 							<td>
 								$lastname
 							</td>
-							<td>
-								<a href = ./ClassDash.php?course='$course_ID'>$course_ID</a>
-							</td>
-						</tr>";
-					}
-				}
-?>
-			</table>
-	</div>
-	<?php }?>
+						*/
+	?>
 	
 	
 	<?php if ($_SESSION['s_code']==5){?>
@@ -151,6 +177,11 @@
 							CourseID
 						</strong>
 					</td>
+					<td>
+						<strong>
+							CourseName
+						</strong>
+					</td>
 				</tr>
 <?php
 				if($stmt->num_rows != 0)
@@ -161,21 +192,16 @@
 						$firstname = $rows['firstname'];
 						$lastname = $rows['lastname'];
 						$course_ID = $rows['course_id'];
+						$course_name = $rows['name'];
 						
 						echo "
 						
 						<tr>
 							<td>
-								$user_id
-							</td>
-							<td>
-								$firstname
-							</td>
-							<td>
-								$lastname
-							</td>
-							<td>
 								<a href = ./course.php?course='$course_ID'>$course_ID</a>
+							</td>
+							<td>
+								$course_name
 							</td>
 						</tr>";
 					}

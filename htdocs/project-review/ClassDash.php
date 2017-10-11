@@ -82,8 +82,10 @@
 	
 	<?php if($_SESSION['s_code']==3){?>
 		<h1>You are an professor</h1>
-		<h2>Add Project</h2>
+		<a href = "./Professor/AddProj.php"><h2>Add Project</h2></a>
 		<h2>Add Student</h2>
+		
+		
 		
 	<?php }?>
 	
