@@ -27,7 +27,7 @@
 	
 	
 	<?php if($_SESSION['s_code']==5||$_SESSION['s_code']==3){?>
-	<h1>You are an student</h1>
+	<h1>You are a student</h1>
 	
 	
 	<?php
@@ -81,8 +81,8 @@
 	<?php }?>
 	
 	<?php if($_SESSION['s_code']==3){?>
-		<h1>You are an professor</h1>
-		<a href = "./Professor/AddProj.php"><h2>Add Project</h2></a>
+		<h1>You are a professor</h1>
+		<a href = "./Professor/AddProj.php?course=<?php echo $_GET['course'];?>"><h2>Add Project</h2></a>
 		<h2>Add Student</h2>
 		
 		

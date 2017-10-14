@@ -1,18 +1,113 @@
 <?php
-	include_once 'includes/connection_string.php';
-	include_once 'includes/security.php';
+	include_once '../includes/connection_string.php';
+	include_once '../includes/security.php';
 	
 	ggc_session();
 	
-	//$stmt=$mysqli->query("SELECT * FROM course WHERE course_id =" .$_GET['course']);
+	$carry = $_GET['course'];
 	
-	//Important SQL statement
-	$stmt=$mysqli->query("SELECT * FROM course JOIN user WHERE course_id =" .$_GET['course'] . "AND course.professor_id = user.user_id");
+	echo "$carry";
 	
+	if(isset($_GET['name']))
+	{
+		$projName1=$_GET['name'];
+		$due_date1=$_GET['due_date'];
+		$course_id1=$_GET['course_id'];
+		
+		$insert_stmt = $mysqli->prepare("INSERT INTO project (professor_id, course_id, name, due_date) VALUES (?,?,?,?)");
+		$insert_stmt->bind_param('isss', $_SESSION['user_id'], $carry, $projName1, $due_date1);
+		$insert_stmt->execute();
+	}
+	if (isset($_POST['delete_id']))
+	{
+		$projName2=$_POST['delete_id'];
+		$delete_stmt= $mysqli->query("DELETE FROM project WHERE project_id = '$projName2'");
+	}
+	$stmt= $mysqli->query("SELECT * FROM project WHERE project.course_id =" .$_GET['course']);
 	
-	//$stmt=$mysqli->query("SELECT * FROM user JOIN class WHERE user.user_id = class.student_id");
-	//$projstmt=$mysqli->query("SELECT * FROM course JOIN project WHERE course_id=" .$_GET['course'] . "AND course.course_id = project.course_id");
-	$projstmt=$mysqli->query("SELECT * FROM project WHERE project.course_id =" .$_GET['course']);
-	
-	echo "This is Add Project File"
+	echo "This is Add Project File";
 ?>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			This is a simple test
+		</title>
+		<link href="css/bootstrap.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="container">
+			<div class="col-md-6">
+			<table class="table table-hover">
+				<tr>
+					<td>
+						<strong>
+							Project Name
+						</strong>
+					</td>
+					<td>
+						<strong>
+							Due Date
+						</strong>
+					</td>
+					<td>
+						<strong>
+							Delete?
+						</strong>
+					</td>
+				</tr>
+<?php
+				if($stmt->num_rows != 0)
+				{
+					while($rows = $stmt->fetch_assoc())
+					{
+						$proj_id = $rows['project_id'];
+						$projName = $rows['name'];
+						$due_date = $rows['due_date'];
+						
+						echo "
+						
+						<tr>
+							<td>
+								$projName
+							</td>
+							<td>
+								$due_date
+							</td>
+							<td>
+								<form action='AddProjinc.php?course=$carry' method='post'>
+									<input name='delete_id' value='$proj_id' hidden='true'>
+									<input type='submit' name='submit_delete' value='X' class='btn btn-danger pull-right'>
+								</form>
+							</td>
+						</tr>";
+					}
+				}
+?>
+			</table>
+			</div>
+			<div class="col-md-6">
+				<form action="AddProjinc.php" method="get">
+					<div class="form-group">
+						<label for="name">
+							<strong>
+								Project Name:
+							</strong>
+						</label>
+						<input type="text" class="form-control" name="name">
+					</div>
+					<div class="form-group">
+						<label for="due_date">
+							<strong>
+								Due Date:
+							</strong>
+						</label>
+						<input type="date" class="form-control" name="due_date">
+					</div>
+						<input type="text" class="form-control" name="course_id" value="<?php echo $carry;?>" hidden="true">
+					<input type="submit" name="submit" value="Submit Record" class="btn btn-primary">
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

@@ -68,7 +68,7 @@
 	<?php }?>
 	
 	<?php if($_SESSION['s_code']==3){?>
-	<h1>You are an professor</h1>
+	<h1>You are a professor</h1>
 	<div class="col-md-6">
 			<!--<table class="one">
 			
@@ -153,7 +153,7 @@
 	
 	
 	<?php if ($_SESSION['s_code']==5){?>
-	<h1>You are an student</h1>
+	<h1>You are a student</h1>
 		<div class="col-md-6">
 			<table class="one">
 				<tr>
