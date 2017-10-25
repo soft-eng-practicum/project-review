@@ -65,6 +65,8 @@
 	
 	<?php if($_SESSION['s_code']==1){?>
 	<h1>You are an admin</h1>
+	<a href = "./Admin/EditProf.php"><h2>Add/Remove Professor</h2></a>
+	<h2>Add/Remove Course</h2>
 	<?php }?>
 	
 	<?php if($_SESSION['s_code']==3){?>
