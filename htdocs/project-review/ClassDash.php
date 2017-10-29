@@ -24,8 +24,6 @@
 	<?php }?>
 	
 	
-	
-	
 	<?php if($_SESSION['s_code']==5||$_SESSION['s_code']==3){?>
 	<h1>You are a student</h1>
 	
@@ -33,9 +31,12 @@
 	<?php
 		if($projstmt->num_rows != 0)
 		{
+			//$course_id = $_GET['course'];
+			$course_id=preg_replace("/[^0-9]+/", "", $_GET['course']);
+			
 			while($rows = $projstmt->fetch_assoc())
 			{
-				$id = $rows['course_id'];
+				$id = $rows['project_id'];
 				$name = $rows['name'];
 				
 				
@@ -46,35 +47,11 @@
 							$id
 						</td>
 						<td>
-							<a href = ./ProjectDash.php?project='$id'>$name</a>
+							<a href = ./ProjectDash.php?course='$course_id'&project='$id'>$name</a>
 						</td>
 					</tr>
 				</table>
 				";
-				/*
-				echo "
-				
-				<tr>
-					<td>
-						$id
-					</td>
-					<td>
-						$name
-					</td>
-					<td>
-						$prof
-					</td>
-					<td>
-						$sec
-					</td>
-					<td>
-						$semester
-					</td>
-					<td>
-						$profName
-					</td>
-				</tr>";
-				*/
 			}
 		}
 	?>

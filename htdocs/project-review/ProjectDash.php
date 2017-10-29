@@ -14,6 +14,8 @@
 	//$projstmt=$mysqli->query("SELECT * FROM course JOIN project WHERE course_id=" .$_GET['course'] . "AND course.course_id = project.course_id");
 	//$projstmt=$mysqli->query("SELECT * FROM project WHERE project.course_id =" .$_GET['course']);
 	//$projstmt=$mysqli->query("SELECT * FROM submission WHERE submission.course_id =" .$_GET['project']);
+	//$course_id1=preg_replace("/[^0-9]+/", "", $_GET['course_id']);
+	
 	$stmt=$mysqli->query("SELECT * FROM user JOIN class WHERE user.user_id = class.student_id");
 ?>
 
@@ -30,8 +32,11 @@
 	
 	<?php if($_SESSION['s_code']==5||$_SESSION['s_code']==3){?>
 	<h1>You are an student</h1>
-	
-	
+	<?php
+		$course_id = preg_replace("/[^0-9]+/", "", $_GET['course']);
+		$project_id = preg_replace("/[^0-9]+/", "", $_GET['project']);
+		echo "<a href = ./ReviewPage.php?course='$course_id'&project='$project_id'><h2>Click here for your review</h2></a>"
+	?>
 	<?php
 	/*
 		if($projstmt->num_rows != 0)

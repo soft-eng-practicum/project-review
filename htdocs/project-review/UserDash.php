@@ -110,7 +110,7 @@
 						$course_name = $rows['name'];
 						$semester = $rows['semester'];
 						$section = $rows['section'];
-						
+						$course_id1=preg_replace("/[^0-9]+/", "", $rows['course_id']);
 						echo "
 						
 						<table>
