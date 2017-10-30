@@ -22,4 +22,4 @@ if(isset($_GET['name']))
 		header ('Location: ./addproj.php?course='.$_GET['course'].'&complete=true');
 		exit();
 	}
-	?>
+?>

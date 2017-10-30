@@ -5,6 +5,9 @@
 	ggc_session();
 	
 	$classStmt=$mysqli->query("SELECT * FROM course JOIN user WHERE course_id =" .$_GET['course']);
+	
+	$course_id = preg_replace("/[^0-9]+/", "", $_GET['course']);
+	$project_id = preg_replace("/[^0-9]+/", "", $_GET['project']);
 ?>
 <html>
 	<head>
@@ -50,65 +53,77 @@
 					?>
 				</div>
 				
-				<div class="rating basicStyle">
-					<h3>Did the project meet the minimum requirements?</h3>
-					
-					<div class="circleBox">
-						<!--<div class="circle"></div>
-						<div class="circle"></div>
-						<div class="circle"></div>
-						<div class="circle"></div>
-						<div class="circle"></div>-->
-						<input class = "radioAdj" type = "radio" name = "Q1">
-						<input class = "radioAdj" type = "radio" name = "Q1">
-						<input class = "radioAdj" type = "radio" name = "Q1">
-						<input class = "radioAdj" type = "radio" name = "Q1">
-						<input class = "radioAdj" type = "radio" name = "Q1">
-					</div>
-					
-					<div class="circleBoxLabel">
-						<div class="stronglyDisagree">
-							<h4>Strongly Disagree</h4>
+				<form action = "ReviewPageinc.php" method = "get">
+					<div class="rating basicStyle">
+						<h3>Did the project meet the minimum requirements?</h3>
+						
+						<div class="circleBox">
+							<!--<div class="circle"></div>
+							<div class="circle"></div>
+							<div class="circle"></div>
+							<div class="circle"></div>
+							<div class="circle"></div>-->
+							<input class = "radioAdj" type = "radio" name = "Q1" value = 1>
+							<input class = "radioAdj" type = "radio" name = "Q1" value = 2>
+							<input class = "radioAdj" type = "radio" name = "Q1" value = 3>
+							<input class = "radioAdj" type = "radio" name = "Q1" value = 4>
+							<input class = "radioAdj" type = "radio" name = "Q1" value = 5>
 						</div>
 						
-						<div class="stronglyAgree">
-							<h4>Strongly Agree</h4>
+						<div class="circleBoxLabel">
+							<div class="stronglyDisagree">
+								<h4>Strongly Disagree</h4>
+							</div>
+							
+							<div class="stronglyAgree">
+								<h4>Strongly Agree</h4>
+							</div>
 						</div>
 					</div>
-				</div>
-				
-				<div class="rating basicStyle">
-					<h3>Did you like the project?</h3>
 					
-					<div class="circleBox">
-						<!--<div class="circle"></div>
-						<div class="circle"></div>
-						<div class="circle"></div>
-						<div class="circle"></div>
-						<div class="circle"></div>-->
-						<input class = "radioAdj" type = "radio" name = "Q2">
-						<input class = "radioAdj" type = "radio" name = "Q2">
-						<input class = "radioAdj" type = "radio" name = "Q2">
-						<input class = "radioAdj" type = "radio" name = "Q2">
-						<input class = "radioAdj" type = "radio" name = "Q2">
-					</div>
-					
-					<div class="circleBoxLabel">
-						<div class="stronglyDisagree">
-							<h4>Strongly Disagree</h4>
+					<div class="rating basicStyle">
+						<h3>Did you like the project?</h3>
+						
+						<div class="circleBox">
+							<!--<div class="circle"></div>
+							<div class="circle"></div>
+							<div class="circle"></div>
+							<div class="circle"></div>
+							<div class="circle"></div>-->
+							<input class = "radioAdj" type = "radio" name = "Q2" value = 1>
+							<input class = "radioAdj" type = "radio" name = "Q2" value = 2>
+							<input class = "radioAdj" type = "radio" name = "Q2" value = 3>
+							<input class = "radioAdj" type = "radio" name = "Q2" value = 4>
+							<input class = "radioAdj" type = "radio" name = "Q2" value = 5>
 						</div>
 						
-						<div class="stronglyAgree">
-							<h4>Strongly Agree</h4>
+						<div class="circleBoxLabel">
+							<div class="stronglyDisagree">
+								<h4>Strongly Disagree</h4>
+							</div>
+							
+							<div class="stronglyAgree">
+								<h4>Strongly Agree</h4>
+							</div>
 						</div>
 					</div>
-				</div>
-				
-				<div class="response basicStyle">
-					<h3>Do you have any other thoughts on the project?</h3>
 					
-					<div><textarea cols = "60" rows = "8" name = "comments"></textarea></div>
-				</div>
+					<div class="response basicStyle">
+						<h3>Do you have any other thoughts on the project?</h3>
+						
+						<div><textarea cols = "60" rows = "8" name = "comments"></textarea></div>
+					</div>
+					
+					<div>
+						<button type = "submit">Submit Review</button>
+						<?php
+						echo 
+							"<input name='course' value='$course_id' hidden='true'>
+							<input name='project' value='$project_id' hidden='true'>" ;
+						?>
+					</div>
+					
+				</form>
 			</div>
 		</div>
 	</body>
