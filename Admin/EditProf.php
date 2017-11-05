@@ -7,7 +7,7 @@
 	//$carry = $_GET['course'];
 	
 	//echo "$carry";
-	
+	/*
 	if(isset($_GET['name']))
 	{
 		$firstName1=$_GET['name'];
@@ -42,14 +42,12 @@
 			$delete_stmt->execute();
 			
 		echo "AND firstname = $profFirstName2 AND lastname = $profLastName2";
-		
-		
-		
 	}
+	*/
 	//$stmt= $mysqli->query("SELECT * FROM project WHERE project.course_id =" .$_GET['course']);
 	$stmt= $mysqli->query("SELECT * FROM user WHERE s_code = 3");
 	
-	echo "This is EDit Professor File";
+	echo "This is Edit Professor File";
 ?>
 <!DOCTYPE html>
 <html>

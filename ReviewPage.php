@@ -4,6 +4,10 @@
 	
 	ggc_session();
 	
+	//reset the time zone
+	//date_default_timezone_set('America/New_York');
+	//$date = date('m/d/Y h:i:s a', time());
+	//$date = date('m/d/Y', time());
 	$classStmt=$mysqli->query("SELECT * FROM course JOIN user WHERE course_id =" .$_GET['course']);
 	
 	$course_id = preg_replace("/[^0-9]+/", "", $_GET['course']);
@@ -18,6 +22,12 @@
 	</head>
 	
 	<body>
+		<?php
+			//echo time();
+			echo $date;
+			//for some reason we're set to Europe/Berlin timezone wise
+			//echo date_default_timezone_get();
+		?>
 		<div id="container">
 			<div id="header">
 				<!--<h1>Software Development 2</h1>-->
@@ -111,7 +121,7 @@
 					<div class="response basicStyle">
 						<h3>Do you have any other thoughts on the project?</h3>
 						
-						<div><textarea cols = "60" rows = "8" name = "comments"></textarea></div>
+						<div><textarea cols = "60" rows = "8" name = "comment"></textarea></div>
 					</div>
 					
 					<div>
