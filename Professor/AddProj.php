@@ -6,8 +6,9 @@
 	
 	$carry = $_GET['course'];
 	
-	echo "$carry";
+	//echo "$carry";
 	
+	/*
 	if(isset($_GET['name']))
 	{
 		$projName1=$_GET['name'];
@@ -23,6 +24,8 @@
 		$projName2=$_POST['delete_id'];
 		$delete_stmt= $mysqli->query("DELETE FROM project WHERE project_id = '$projName2'");
 	}
+	
+	*/
 	$stmt= $mysqli->query("SELECT * FROM project WHERE project.course_id =" .$_GET['course']);
 	
 	echo "This is Add Project File";
