@@ -40,7 +40,7 @@ if (isset($_POST['fname'], $_POST['lname'], $_POST['phone'], $_POST['email'], $_
         $password = hash('sha512', $password . $salt);
         if ($insert_stmt = $mysqli->prepare("INSERT INTO user (firstname, lastname, phone, email, carrier, password, salt) VALUES (?, ?, ?, ?, ?, ?, ?)")) 
 		{
-            $insert_stmt->bind_param('sssssss', $fname, $lname, $phone, $carrier, $email, $password, $salt);
+            $insert_stmt->bind_param('sssssss', $fname, $lname, $phone, $email, $carrier,  $password, $salt);
             if (! $insert_stmt->execute()) 
 			{
                 header("Location: ../error.php?message=can_you_remind_me_how_to_register_someone.lol");
@@ -80,8 +80,7 @@ if (isset($_POST['fname'], $_POST['lname'], $_POST['phone'], $_POST['email'], $_
         form.password.focus();
         return false;
     }
-        
-    // Create a new element input, this will be our hashed password field. 
+       
     var pass = document.createElement("input");
 
     // Add the new element to our form. 
@@ -89,12 +88,10 @@ if (isset($_POST['fname'], $_POST['lname'], $_POST['phone'], $_POST['email'], $_
     pass.name = "pass";
     pass.type = "hidden";
     pass.value = hex_sha512(password.value);
-
-    // Make sure the plaintext password doesn't get sent. 
+ 
     password.value = "";
     confirm.value = "";
 
-    // Finally submit the form. 
     form.submit();
     return true;
 	}
@@ -103,7 +100,7 @@ if (isset($_POST['fname'], $_POST['lname'], $_POST['phone'], $_POST['email'], $_
 <link href="./css/bootstrap.css" rel="stylesheet">
 
 <div class="">
-	<form class="form-horizontal" role="form" method="post" name="registration_form" action="<?php echo esc_url($_SERVER['PHP_SELF']); ?>">
+	<form class="form-horizontal" role="form" method="post" name="registration_form" action="">
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="fname">First Name:</label>
 			<div class="col-sm-8">
@@ -142,7 +139,7 @@ if (isset($_POST['fname'], $_POST['lname'], $_POST['phone'], $_POST['email'], $_
 		</div>
 		<div class="form-group">
 			<div class="col-sm-6">
-				<input type="button" name="submit" id="submit" value="Register" class="btn btn-info pull-right"onclick="return regformhash(this.form,
+				<input type="button"value="Register" class="btn btn-info pull-right"onclick="return regformhash(this.form,
                                    this.form.fname,
                                    this.form.lname,
                                    this.form.phone,
