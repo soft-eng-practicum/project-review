@@ -5,10 +5,12 @@
 	ggc_session();
 	
 	$mysqli= new mysqli("localhost", "ggc_user", "ggc","ggc_project_review");
+	
 	if($mysqli->connect_error)
 	{
 		echo "oh shit";
 	}
+	/*
 	if(isset($_GET['firstname']))
 	{
 		$firstname1=$_GET['firstname'];
@@ -24,7 +26,9 @@
 		$id2=$_POST['delete_id'];
 		$delete_stmt = $mysqli->query("DELETE FROM test WHERE id = '$id2'");
 	}
-	$stmt=$mysqli->query("SELECT * FROM user JOIN class JOIN course WHERE user.user_id = class.student_id AND class.course_id = course.course_id");
+	*/
+	//$_SESSION['user_id'];
+	$stmt=$mysqli->query("SELECT * FROM user JOIN class JOIN course ON user.user_id = class.student_id AND class.course_id = course.course_id WHERE user.user_id = '$_SESSION[user_id]'");
 	//$stm1t=$mysqli->query("SELECT * FROM class JOIN course WHERE class.student_id = ");
 	//$stmt=$mysqli->query("SELECT * FROM course_section");
 
@@ -66,7 +70,7 @@
 	<?php if($_SESSION['s_code']==1){?>
 	<h1>You are an admin</h1>
 	<a href = "./Admin/EditProf.php"><h2>Add/Remove Professor</h2></a>
-	<h2>Add/Remove Course</h2>
+	<a href = "./Admin/EditCourse.php"><h2>Add/Remove Course</h2></a>
 	<?php }?>
 	
 	<?php if($_SESSION['s_code']==3){?>
@@ -110,7 +114,7 @@
 						$course_name = $rows['name'];
 						$semester = $rows['semester'];
 						$section = $rows['section'];
-						$course_id1=preg_replace("/[^0-9]+/", "", $rows['course_id']);
+						
 						echo "
 						
 						<table>
