@@ -5,6 +5,7 @@
 	ggc_session();
 	
 	$mysqli= new mysqli("localhost", "ggc_user", "ggc","ggc_project_review");
+	
 	if($mysqli->connect_error)
 	{
 		echo "oh shit";
@@ -26,6 +27,9 @@
 		$delete_stmt = $mysqli->query("DELETE FROM test WHERE id = '$id2'");
 	}
 	*/
+
+	//$_SESSION['user_id'];
+
 	$stmt=$mysqli->query("SELECT * FROM user JOIN class JOIN course ON user.user_id = class.student_id AND class.course_id = course.course_id WHERE user.user_id = '$_SESSION[user_id]'");
 	//$stm1t=$mysqli->query("SELECT * FROM class JOIN course WHERE class.student_id = ");
 	//$stmt=$mysqli->query("SELECT * FROM course_section");
@@ -87,8 +91,8 @@
 				<h1>You are an admin</h1>
 				
 				<div class="tableStyle">
-					<a href = "./Admin/EditProf.php"><h3>Add/Remove Professor</h3></a>
-					<h3>Add/Remove Course</h3>
+					<a href = "./Admin/EditProf.php"><h2>Add/Remove Professor</h2></a>
+					<a href = "./Admin/EditCourse.php"><h2>Add/Remove Course</h2></a>
 				</div>
 			</div>
 		<?php }?>
@@ -107,6 +111,7 @@
 				<?php
 					if($stmt->num_rows != 0)
 					{
+
 						while($rows = $stmt->fetch_assoc())
 						{
 							$user_id = $rows['user_id'];
@@ -117,6 +122,7 @@
 							$semester = $rows['semester'];
 							$section = $rows['section'];
 							$course_id1=preg_replace("/[^0-9]+/", "", $rows['course_id']);
+
 							
 							echo "
 							<div class = 'tableContainer'>

@@ -4,29 +4,28 @@
 	
 	ggc_session();
 	
-	$stmt= $mysqli->query("SELECT * FROM course");
+	//$carry = $_GET['course'];
 	
-	echo "This is Edit Course File";
+	$stmt= $mysqli->query("SELECT * FROM course WHERE professor_id = " .$_SESSION['user_id']);
+	
+	echo "This is Add Course File";
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>
-			Edit Course
+			Add Course
 		</title>
 		<link href="../css/bootstrap.css" rel="stylesheet">
 	</head>
 	<body>
-		<?php
-		
-		?>
 		<div class="container">
 			<div class="col-md-6">
 			<table class="table table-hover">
 				<tr>
 					<td>
 						<strong>
-							Name
+							Course Name
 						</strong>
 					</td>
 					<td>
@@ -40,33 +39,26 @@
 						</strong>
 					</td>
 					<td>
-						<strong>
-							Course ID
-						</strong>
-					</td>
-					<td>
-						<strong>
+						<!-- <strong>
 							Delete?
 						</strong>
-					</td>
+					</td> -->
 				</tr>
 <?php
 				if($stmt->num_rows != 0)
 				{
 					while($rows = $stmt->fetch_assoc())
 					{
-						$courseID = $rows['course_id'];
-						$name = $rows['name'];
+						$course_id = $rows['course_id'];
+						$course_name = $rows['name'];
 						$section = $rows['section'];
-						$professorID = $rows['professor_id'];
 						$semester = $rows['semester'];
-						
 						
 						echo "
 						
 						<tr>
 							<td>
-								$name
+								$course_name
 							</td>
 							<td>
 								$section
@@ -74,59 +66,47 @@
 							<td>
 								$semester
 							</td>
-							<td>
-								$courseID
-							</td>
-							<td>
-								<form action='EditCourse.php' method='post'>
-									<input name='delete_id' value='$courseID' hidden='true'>
-									<input name='delete_name' value='$name' hidden='true'>
-									<input name='delete_section' value='$section' hidden='true'>
-									<input name='delete_semester' value='$semester' hidden='true'>
+						</tr>";
+							/*<td>
+								<form action='AddCourseinc.php?' method='post'>
+									<input name='delete_id' value='$course_id' hidden='true'>
 									<input type='submit' name='submit_delete' value='X' class='btn btn-danger pull-right'>
 								</form>
 							</td>
-						</tr>";
+						</tr>";*/
 					}
 				}
 ?>
 			</table>
 			</div>
 			<div class="col-md-6">
-				<form action="EditCourseinc.php" method="get">
-					<div class="form-group">
-						<label for="course_id">
-							<strong>
-								Course ID
-							</strong>
-						</label>
-						<input type="text" class="form-control" name="delete_id">
-					</div>
+				<form action="AddCourseinc.php" method="get">
 					<div class="form-group">
 						<label for="name">
 							<strong>
-								Name
+								Course Name:
 							</strong>
 						</label>
-						<input type="text" class="form-control" name="delete_name">
+						<input type="text" class="form-control" name="name">
 					</div>
 					<div class="form-group">
 						<label for="section">
 							<strong>
-								Section
+								Section:
 							</strong>
 						</label>
-						<input type="text" class="form-control" name="delete_section">
+						<input type="text" class="form-control" name="section">
 					</div>
 					<div class="form-group">
 						<label for="semester">
 							<strong>
-								Semester
+								Semester:
 							</strong>
 						</label>
-						<input type="text" class="form-control" name="delete_semester">
+						<input type="text" class="form-control" name="semester">
 					</div>
-					<input type="submit" name="submit_delete" value="Delete" class="btn btn-primary">
+						<!-- <input type="text" class="form-control" name="course_id" value="<?php //echo $carry;?>" hidden="true"> -->
+					<input type="submit" name="submit" value="Submit Record" class="btn btn-primary">
 				</form>
 			</div>
 		</div>

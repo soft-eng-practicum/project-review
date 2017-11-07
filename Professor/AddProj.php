@@ -36,7 +36,7 @@
 		<title>
 			This is a simple test
 		</title>
-		<link href="css/bootstrap.css" rel="stylesheet">
+		<link href="../css/bootstrap.css" rel="stylesheet">
 	</head>
 	<body>
 		<div class="container">
