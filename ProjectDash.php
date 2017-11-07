@@ -14,7 +14,7 @@
 	//$projstmt=$mysqli->query("SELECT * FROM course JOIN project WHERE course_id=" .$_GET['course'] . "AND course.course_id = project.course_id");
 	//$projstmt=$mysqli->query("SELECT * FROM project WHERE project.course_id =" .$_GET['course']);
 	//$projstmt=$mysqli->query("SELECT * FROM submission WHERE submission.course_id =" .$_GET['project']);
-	$stmt=$mysqli->query("SELECT * FROM user JOIN class ON user.user_id = class.student_id WHERE user.user_id = $_SESSION['user_id']");
+	$stmt=$mysqli->query("SELECT * FROM user JOIN class ON user.user_id = class.student_id WHERE user.user_id = '$_SESSION[user_id]'");
 ?>
 
 <?php if (login_checker($mysqli) == true) : ?>
