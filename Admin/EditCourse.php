@@ -14,7 +14,7 @@
 		<title>
 			Edit Course
 		</title>
-		<link href="css/bootstrap.css" rel="stylesheet">
+		<link href="../css/bootstrap.css" rel="stylesheet">
 	</head>
 	<body>
 		<?php
