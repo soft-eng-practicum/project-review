@@ -16,7 +16,7 @@
 <html>
 	<head>
 		<title>Review Page</title>
-		<link rel="stylesheet" type="text/css" href="ReviewPageStyle.css" />
+		<link rel="stylesheet" type="text/css" href="css/MainStyle.css" />
 		
 		
 	</head>

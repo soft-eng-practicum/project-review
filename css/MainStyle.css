@@ -1,0 +1,204 @@
+body
+{
+	background-color: #00704a;
+	font-family: Trebuchet MS, Helvetica, sans-serif;
+	
+}
+
+a
+{
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 25;
+}
+
+#container
+{
+	background-color: #bed4cd;
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	text-align:center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	-webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+#header
+{
+	padding-top: 10px;
+}
+
+#header h1, h2, h3, h4
+{
+	margin: 5px auto;
+}
+
+.basicStyle
+{
+	width: 700px;
+	display: inline-block;
+	
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	
+	background-color: #b0c7bf;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	text-align:center;
+	-webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+.tableStyle
+{
+	/*overflow: hidden;*/
+	display: inline-block;
+	width: 600px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	
+	margin-left: auto;
+	margin-right: auto;
+	
+	/*margin: 0 auto;*/
+	
+	background-color: #a3b9b2;
+	padding-top: 8px;
+	padding-bottom: 2px;
+	-webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+.tableContainer
+{
+	
+}
+
+.tableContentSmall
+{
+	
+	display: inline-block;
+	width: 110px;
+	height: 30px;
+	margin: 5 10;
+	
+}
+
+.tableContent
+{
+	
+	display: inline-block;
+	width: 170px;
+	height: 30px;
+	margin: 10 10;
+	
+}
+
+.tableContentLeft
+{
+}
+
+.tableContentRight
+{
+}
+
+.rating
+{
+	
+}
+
+.response
+{
+	
+}
+
+.projectLink
+{
+	display: block;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.circle
+{
+	width: 18px;
+    height: 18px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+    background: white;
+	display: inline-block;
+	margin-left: 45px;
+	margin-right: 45px;
+}
+
+.radioAdj
+{
+	//width: 18px;
+    //height: 18px;
+    //-webkit-border-radius: 9px;
+    //-moz-border-radius: 9px;
+    //border-radius: 9px;
+    //background: white;
+	//display: inline-block;
+	margin-left: 45px;
+	margin-right: 45px;
+}
+
+.circleBox
+{
+	overflow: hidden;
+	width: 700;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 25px;
+	margin-bottom: 5px;
+}
+
+.circleBoxLabel
+{
+	overflow: hidden;
+	width: 700;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+.stronglyDisagree
+{
+	display: inline-block;
+	margin-right: 150px;
+}
+
+.stronglyAgree
+{
+	display: inline-block;
+	margin-left: 150px;
+}
+
+.textEntry
+{
+	background-color: white;
+	width: 600px;
+	height: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 25px;
+	margin-bottom: 25px;
+	text-align:center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	-webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
