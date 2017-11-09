@@ -68,6 +68,8 @@
 						$projName = $rows['name'];
 						$due_date = $rows['due_date'];
 						
+						$confirm_text = "Are you sure you want to delete $projName?";
+						
 						echo "
 						
 						<tr>
@@ -80,7 +82,7 @@
 							<td>
 								<form action='AddProjinc.php?course=$carry' method='post'>
 									<input name='delete_id' value='$proj_id' hidden='true'>
-									<input type='submit' name='submit_delete' value='X' class='btn btn-danger pull-right'>
+									<input type='submit' name='submit_delete' value='X' class='btn btn-danger pull-right' onclick='return confirm(\"$confirm_text\")'>
 								</form>
 							</td>
 						</tr>";

@@ -1,6 +1,7 @@
 <?php
 	include_once '../includes/connection_string.php';
 	include_once '../includes/security.php';
+	include_once '../js/delete_confirm.js';
 	ggc_session();
 	
 if(isset($_GET['name']))
