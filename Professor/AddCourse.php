@@ -39,10 +39,10 @@
 						</strong>
 					</td>
 					<td>
-						<!-- <strong>
+						 <strong>
 							Delete?
 						</strong>
-					</td> -->
+					</td>
 				</tr>
 <?php
 				if($stmt->num_rows != 0)
@@ -66,14 +66,13 @@
 							<td>
 								$semester
 							</td>
-						</tr>";
-							/*<td>
+							<td>
 								<form action='AddCourseinc.php?' method='post'>
-									<input name='delete_id' value='$course_id' hidden='true'>
+									<input name='delete_id' value='$course_id' 	hidden='true'>
 									<input type='submit' name='submit_delete' value='X' class='btn btn-danger pull-right'>
 								</form>
 							</td>
-						</tr>";*/
+						</tr>";
 					}
 				}
 ?>
@@ -105,8 +104,8 @@
 						</label>
 						<input type="text" class="form-control" name="semester">
 					</div>
-						<!-- <input type="text" class="form-control" name="course_id" value="<?php //echo $carry;?>" hidden="true"> -->
-					<input type="submit" name="submit" value="Submit Record" class="btn btn-primary">
+						<!--<input type="text" class="form-control" name="course_id" value="<?php //echo $carry;?>" hidden="true"> -->
+						<input type="submit" name="submit" value="Submit Record" class="btn btn-primary">
 				</form>
 			</div>
 		</div>
