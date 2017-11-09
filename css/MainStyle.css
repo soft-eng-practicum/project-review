@@ -9,7 +9,8 @@ a
 {
 	text-decoration: none;
 	font-weight: bold;
-	font-size: 25;
+	font-size: 25px;
+	color: #00704a;
 }
 
 #container
@@ -33,9 +34,15 @@ a
 	padding-top: 10px;
 }
 
-#header h1, h2, h3, h4
+#header h1
 {
 	margin: 5px auto;
+}
+
+.title
+{
+	text-align:center;
+	color: #b0c7bf;
 }
 
 .basicStyle
@@ -52,6 +59,31 @@ a
 	padding-top: 2px;
 	padding-bottom: 2px;
 	text-align:center;
+	-webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+.loginStyle
+{
+	display: inline-block;
+	width: 400px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.buttonStyle
+{
+	color: #bed4cd;
+	font-size: 30px;
+	
+	background-color: #00704a;
+	height: 60px;
+	width: 120px;
+	
 	-webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     border-radius: 15px;
@@ -101,6 +133,11 @@ a
 	height: 30px;
 	margin: 10 10;
 	
+}
+
+.tableContent h4
+{
+	font-size: 15px;
 }
 
 .tableContentLeft

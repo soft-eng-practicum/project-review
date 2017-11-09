@@ -81,9 +81,10 @@
 </head>
 
 <body>
-	<div id="container">
+	
 		<?php if (login_checker($mysqli) == true) : ?>
-		<?php echo "<h1>Welcome " . $_SESSION['firstname'] . "! You are logged in!</h1><br/>
+		<?php echo "<div class=\"title\"><h1>Welcome " . $_SESSION['firstname'] . "! You are logged in!</h1><br/></div>
+				<div id=\"container\">
 				<h2>User Dash</h2>";?>
 		
 		<?php if($_SESSION['s_code']==1){?>
@@ -126,22 +127,24 @@
 							
 							echo "
 							<div class = 'tableContainer'>
+							<a href = ./ClassDash.php?course='$course_ID'>
 							<!--
 								<div class = 'tableContent'>
 									<a href = ./ClassDash.php?course='$course_ID'>$course_ID</a>
 								</div>
 							-->	
 								<div class = 'tableContent'>
-									<a href = ./ClassDash.php?course='$course_ID'>$course_name</a>
+									<h4>$course_name</h4>
 								</div>
 								
 								<div class = 'tableContent'>
-									<a href = ./ClassDash.php?course='$course_ID'>$semester</a>
+									<h4>$semester</h4>
 								</div>
 								
 								<div class = 'tableContent'>
-									<a href = ./ClassDash.php?course='$course_ID'>$section</a>
+									<h4>$section</h4>
 								</div>
+							</a>
 							</div>
 							";
 					
