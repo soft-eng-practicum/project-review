@@ -54,6 +54,8 @@
 						$section = $rows['section'];
 						$semester = $rows['semester'];
 						
+						$confirm_text = "Are you sure you want to delete $course_name, section $section, $semester?";
+						
 						echo "
 						
 						<tr>
@@ -67,9 +69,9 @@
 								$semester
 							</td>
 							<td>
-								<form action='AddCourseinc.php?' method='post'>
+								<form action='AddCourseinc.php?' method='post' id='delete_btn'>
 									<input name='delete_id' value='$course_id' 	hidden='true'>
-									<input type='submit' name='submit_delete' value='X' class='btn btn-danger pull-right'>
+									<input type='submit' name='submit_delete' value='X' class='btn btn-danger pull-right' onclick='return confirm(\"$confirm_text\")';>
 								</form>
 							</td>
 						</tr>";
