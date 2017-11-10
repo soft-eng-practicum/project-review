@@ -16,7 +16,7 @@ a
 #container
 {
 	background-color: #bed4cd;
-	width: 800px;
+	width: 90%;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 30px;
@@ -27,6 +27,24 @@ a
 	-webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     border-radius: 15px;
+}
+@media (min-width: 768px)
+{
+	#container
+	{
+		background-color: #bed4cd;
+		width: 700px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 30px;
+		margin-bottom: 30px;
+		text-align:center;
+		padding-top: 2px;
+		padding-bottom: 2px;
+		-webkit-border-radius: 15px;
+		-moz-border-radius: 15px;
+		border-radius: 15px;
+	}
 }
 
 #header
@@ -47,7 +65,7 @@ a
 
 .basicStyle
 {
-	width: 700px;
+	width: 90%;
 	display: inline-block;
 	
 	margin-top: 20px;
@@ -60,14 +78,14 @@ a
 	padding-bottom: 2px;
 	text-align:center;
 	-webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
 }
 
 .loginStyle
 {
 	display: inline-block;
-	width: 400px;
+	width: 90%;
 	margin-top: 20px;
 	margin-bottom: 20px;
 	
@@ -93,7 +111,7 @@ a
 {
 	/*overflow: hidden;*/
 	display: inline-block;
-	width: 600px;
+	width: 90%;
 	margin-top: 20px;
 	margin-bottom: 20px;
 	
@@ -112,7 +130,7 @@ a
 
 .tableContainer
 {
-	
+	width: 100%;
 }
 
 .tableContentSmall
@@ -129,10 +147,35 @@ a
 {
 	
 	display: inline-block;
-	width: 170px;
+	/*width: 170px;*/
+	/*width: 18%;*/
 	height: 30px;
 	margin: 10 10;
-	
+}
+
+.tc5
+{
+	width: 19%;
+}
+
+.tc4
+{
+	width: 24%;
+}
+
+.tc3
+{
+	width: 32%;
+}
+
+.tc2
+{
+	width: 48%;
+}
+
+.tc1
+{
+	width: 98%;
 }
 
 .tableContent h4
