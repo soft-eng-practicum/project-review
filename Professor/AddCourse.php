@@ -137,6 +137,7 @@
 									<input type='submit' name='submit_delete' value='X' class='btn btn-danger' onclick='return confirm(\"$confirm_text\")';>
 								-->
 								
+								<input name='delete_id' value='$course_id' 	hidden='true'>
 								<button type='submit' class='buttonStyleDel' name='submit_delete' value='X' onclick='loginhash(this.form, this.form.password);'>X</button>
 								</form>
 							</div>
