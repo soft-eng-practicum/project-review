@@ -107,6 +107,20 @@ a
     border-radius: 15px;
 }
 
+.buttonStyleDel
+{
+	color: #bed4cd;
+	font-size: 15px;
+	
+	background-color: #990000;
+	height: 30px;
+	width: 30px;
+	
+	-webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
 .tableStyle
 {
 	/*overflow: hidden;*/
@@ -160,7 +174,7 @@ a
 
 .tc4
 {
-	width: 24%;
+	width: 19%;
 }
 
 .tc3
