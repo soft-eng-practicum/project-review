@@ -131,19 +131,19 @@
 							<div class = 'tableContainer'>
 							<a href = ./ClassDash.php?course='$course_ID'>
 							<!--
-								<div class = 'tableContent'>
+								<div class = 'tableContent tc4'>
 									<a href = ./ClassDash.php?course='$course_ID'>$course_ID</a>
 								</div>
 							-->	
-								<div class = 'tableContent'>
+								<div class = 'tableContent tc3'>
 									<h4>$course_name</h4>
 								</div>
 								
-								<div class = 'tableContent'>
+								<div class = 'tableContent tc3'>
 									<h4>$semester</h4>
 								</div>
 								
-								<div class = 'tableContent'>
+								<div class = 'tableContent tc3'>
 									<h4>$section</h4>
 								</div>
 							</a>
@@ -185,31 +185,34 @@
 			<div class="basicStyle">
 				<h1>You are a student</h1>
 					<div class = "tableStyle">
+						<!--
 						<div class = "tableContainer">
-							<div class = "tableContentSmall">
+							<div class = "tableContent tc5">
 								<h4>ID</h4>
 							</div>
 							
-							<div class = "tableContentSmall">
+							<div class = "tableContent tc5">
 								<h4>First Name</h4>
 							</div>
 							
-							<div class = "tableContentSmall">
+							<div class = "tableContent tc5">
 								<h4>Last Name</h4>
 							</div>
 							
-							<div class = "tableContentSmall">
+							<div class = "tableContent tc5">
 								<h4>Course ID</h4>
 							</div>
 							
-							<div class = "tableContentSmall">
+							<div class = "tableContent tc5">
 								<h4>Course Name</h4>
 							</div>
 						</div>
-						
+						-->
 						<?php
 								if($stmt->num_rows != 0)
 								{
+									$num = $stmt->num_rows;
+									
 									while($rows = $stmt->fetch_assoc())
 									{
 										$user_id = $rows['user_id'];
@@ -221,24 +224,25 @@
 										
 										echo "
 										<div class = 'tableContainer'>
-											<div class = 'tableContentSmall'>
-												<a href = ./ClassDash.php?course='$user_id'>$user_id</a>
+										<!--
+											<div class = 'tableContent tc5'>
+												<a href = ./ClassDash.php?course='$user_id'><h4>$user_id</h4></a>
 											</div>
 											
-											<div class = 'tableContentSmall'>
-												<a href = ./ClassDash.php?course='$firstname'>$firstname</a>
+											<div class = 'tableContent tc5'>
+												<a href = ./ClassDash.php?course='$firstname'><h4>$firstname</h4></a>
 											</div>
 											
-											<div class = 'tableContentSmall'>
-												<a href = ./ClassDash.php?course='$lastname'>$lastname</a>
+											<div class = 'tableContent tc5'>
+												<a href = ./ClassDash.php?course='$lastname'><h4>$lastname</h4></a>
 											</div>
 											
-											<div class = 'tableContentSmall'>
-												<a href = ./ClassDash.php?course='$course_ID'>$course_ID</a>
+											<div class = 'tableContent tc5'>
+												<a href = ./ClassDash.php?course='$course_ID'><h4>$course_ID</h4></a>
 											</div>
-											
-											<div class = 'tableContentSmall'>
-												<a href = ./ClassDash.php?course='$course_name'>$course_name</a>
+										-->	
+											<div class = 'tableContent tc1'>
+												<a href = ./ClassDash.php?course='$course_ID'><h3>$course_name</h3></a>
 											</div>
 										</div>
 										";

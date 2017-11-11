@@ -15,21 +15,35 @@
 	$projstmt=$mysqli->query("SELECT * FROM project WHERE project.course_id =" .$_GET['course']);
 ?>
 
+<!doctype html>
+<html>
+<head>
+	<title>Pew</title>
+	<link href="./css/bootstrap.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/MainStyle.css" />
+</head>
+
+<body>
 <?php if (login_checker($mysqli) == true) : ?>
-<?php echo "<h1>Welcome " . $_SESSION['firstname'] . "! You are logged in!</h1><br/>
+<?php echo "<div class=\"title\"><h1>Welcome " . $_SESSION['firstname'] . "! You are logged in!</h1></div><br/>
+			<div id=\"container\">
 			<h2>Class Dash</h2>";?>
 	
+	
 	<?php if($_SESSION['s_code']==1){?>
+	<div class="basicStyle">
 	<h1>You are an admin</h1>
+	</div>
 	<?php }?>
 	
 	
 	
 	
 	<?php if($_SESSION['s_code']==5||$_SESSION['s_code']==3){?>
+	<div class="basicStyle">
 	<h1>You are a student</h1>
 	
-	
+	<div class="tableStyle">
 	<?php
 		if($projstmt->num_rows != 0)
 		{
@@ -38,8 +52,24 @@
 				$id = $rows['course_id'];
 				$name = $rows['name'];
 				
-				
 				echo "
+					<div class = 'tableContainer'>
+						<a href = ./ProjectDash.php?project='$id'>
+						<!--
+							<div class = 'tableContent'>
+								<h4>$id</h4>
+							</div>
+						-->	
+							<div class = 'tableContent'>
+								<h3>$name</h3>
+							</div>
+						</a>
+					</div>
+					";
+				
+				/*
+				echo "
+				
 				<table>
 					<tr>
 						<td>
@@ -51,7 +81,7 @@
 					</tr>
 				</table>
 				";
-				/*
+				
 				echo "
 				
 				<tr>
@@ -78,17 +108,34 @@
 			}
 		}
 	?>
+	</div>
+	</div>
 	<?php }?>
+	
+	
 	
 	<?php if($_SESSION['s_code']==3){?>
+	<div class="basicStyle">
 		<h1>You are a professor</h1>
-		<a href = "./Professor/AddProj.php?course=<?php echo $_GET['course'];?>"><h2>Add Project</h2></a>
-		<h2>Add Student</h2>
 		
+		<div class = "tableContainer">
+			<div class = "tableContent">
+				<a href = "./Professor/AddProj.php?course=<?php echo $_GET['course'];?>"><h3>Add Project</h3></a>
+			</div>
+		</div>	
+			
+		<div class = "tableContainer">	
+			<div class = "tableContent">
+				<h3>Add Student</h3>
+			</div>
+		</div>
 		
-		
+	</div>	
 	<?php }?>
 	
+	
+	</div>
+</body>	
 	
 	
 <?php else : ?>

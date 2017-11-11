@@ -32,6 +32,7 @@
 			$link = $rows['link'];
 			echo "
 					<h1>Submission</h1>
+
 					<h3>$sub_id</h3>
 					<h3>$stu_id</h3>
 					<h3>$proj_id</h3>
@@ -42,6 +43,7 @@
 			//$revstmt=$mysqli->query("SELECT * FROM review WHERE review.submission_id = ".$sub_id);
 			
 			$revstmt=$mysqli->query("SELECT * FROM review WHERE review.submission_id = ".$sub_id);
+
 			if ($revstmt->num_rows != 0)
 			{
 				while($rows = $revstmt->fetch_assoc())
@@ -53,6 +55,7 @@
 					$comment = $rows['comment'];
 					echo "
 							<h2>Review</h2>
+
 							<td>$rev_id</td>
 						
 							<td>$stu_id</td>

@@ -37,9 +37,11 @@
 			This is a simple test
 		</title>
 		<link href="../css/bootstrap.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/MainStyle.css" />
 	</head>
+	
 	<body>
-		<div class="container">
+		<div id="container">
 			<div class="col-md-6">
 			<table class="table table-hover">
 				<tr>
