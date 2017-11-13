@@ -4,20 +4,16 @@
 	
 	ggc_session();
 	
-	//Important SQL statement
-	//$stmt=$mysqli->query("SELECT * FROM course JOIN user WHERE course_id =" .$_GET['course'] . "AND course.professor_id = user.user_id");
+	/**GradeDash
+   * This page will display all the relevant data for the project
+   * from the passed variable from the last page. So all the submissions
+   * will be taken from the MySQL database and then all the reviews from
+   * those submission will be displayed right next to their respective submissions.
+   */
+
 	
-	/*
-	$projstmt=$mysqli->query("SELECT * FROM project WHERE project.course_id =" .$_GET['course']);
-	$substmt=$mysqli->query("SELECT * FROM submission JOIN project ON project.project_id AND submission.project_id WHERE project_id = ".$_GET['project_id']);
-	$revstmt=$mysqli->query("SELECT * FROM review AND submission ON submission.submission_id = review.submission_id ");
-	*/
-	//$stmt=$mysqli->query("SELECT * FROM submission JOIN review ON submission.submission_id = review.submission_id WHERE submission.submission_id = ".$_GET['project_id']);
-	//$stmt=$mysqli->query("SELECT * FROM submission WHERE submission.submission_id = ".$_GET['project_id']);
 	$stmt=$mysqli->query("SELECT * FROM submission WHERE submission.project_id = " .$_GET['project']);
 	
-
-	//$revstmt=$mysqli->query("SELECT * FROM review");
 ?>
 
 <?php
@@ -40,7 +36,6 @@
 					<a href=$link target='_blank'><td>$link</td></a>
 				
 			";
-			//$revstmt=$mysqli->query("SELECT * FROM review WHERE review.submission_id = ".$sub_id);
 			
 			$revstmt=$mysqli->query("SELECT * FROM review WHERE review.submission_id = ".$sub_id);
 

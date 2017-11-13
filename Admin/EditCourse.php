@@ -4,6 +4,14 @@
 	
 	ggc_session();
 	
+	/**EditCourse
+   * This page addresses the administrators 
+   * ability to edit courses, and then remove,
+   * and finally do an update or edit to present courses.
+   */
+
+	
+	
 	$stmt= $mysqli->query("SELECT * FROM course");
 	
 	echo "This is Edit Course File";
@@ -18,7 +26,13 @@
 	</head>
 	<body>
 		<?php
-		
+		/**fetchAllCourseRows
+	   * this if, while loop takes the query above for
+	   * the student's classes
+	   * and calls all the rows and assigns to a variable
+	   * which is then echoed out into tables
+	   * Void
+	   */
 		?>
 		<div class="container">
 			<div class="col-md-6">

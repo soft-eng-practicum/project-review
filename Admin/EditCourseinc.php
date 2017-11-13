@@ -3,6 +3,19 @@
 	include_once '../includes/security.php';
 	ggc_session();
 	
+	/**EditCourseinc
+   * This page takes all the data in the last page, 
+   * and prepares SQL statements based on the last
+   * page's variables that have been filled.
+   */
+
+	
+	/**insertCourseRows
+   * this block of code, takes the data from the form
+   * in the last page, and prepares and executes a SQL query
+   * for an insert into the Course Table.
+   * Void
+   */
 	if (isset($_GET['delete_id']))
 	{
 		$courseID2=preg_replace("/[^0-9]+/", "", $_GET['delete_id']);

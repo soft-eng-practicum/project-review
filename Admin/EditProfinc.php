@@ -3,6 +3,12 @@
 	include_once '../includes/security.php';
 	ggc_session();
 	
+	/**EditProfinc
+   * This class receives all the information from EditProf
+   * and then prepares SQL statements so that it may be
+   * either removing, adding, or updating the MySQL database.
+   */
+	
 	if (isset($_GET['delete_id']))
 	{
 		//$userID2=$_POST['delete_id'];

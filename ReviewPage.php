@@ -4,6 +4,13 @@
 	
 	ggc_session();
 	
+	/**ReviewPage
+   * This page's purpose is to allow the student to provide feedback
+   * on their peer's submission, taking all their entries from this page
+   * and then sending it over to ReviewPageinc for processing.
+   */
+
+	
 	//reset the time zone
 	//date_default_timezone_set('America/New_York');
 	//$date = date('m/d/Y h:i:s a', time());

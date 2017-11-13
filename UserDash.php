@@ -4,35 +4,20 @@
 	
 	ggc_session();
 	
+	/**UserDash
+   * shows the users all the relevant features according to their
+   * s_code on this page, and then through a SQL query calls all the
+   * academic classes associated with that user's ID
+   */
+
 	$mysqli= new mysqli("localhost", "ggc_user", "ggc","ggc_project_review");
 	
 	if($mysqli->connect_error)
 	{
 		echo "oh shit";
 	}
-	/*
-	if(isset($_GET['firstname']))
-	{
-		$firstname1=$_GET['firstname'];
-		$lastname1=$_GET['lastname'];
-		$email1=$_GET['email'];
-		
-		$insert_stmt = $mysqli->prepare("INSERT INTO test (firstname, lastname, email) VALUES (?,?,?)");
-		$insert_stmt->bind_param('sss', $firstname1, $lastname1, $email1);
-		$insert_stmt->execute();
-	}
-	if (isset($_POST['delete_id']))
-	{
-		$id2=$_POST['delete_id'];
-		$delete_stmt = $mysqli->query("DELETE FROM test WHERE id = '$id2'");
-	}
-	*/
-
-	//$_SESSION['user_id'];
 
 	$stmt=$mysqli->query("SELECT * FROM user JOIN class JOIN course ON user.user_id = class.student_id AND class.course_id = course.course_id WHERE user.user_id = '$_SESSION[user_id]'");
-	//$stm1t=$mysqli->query("SELECT * FROM class JOIN course WHERE class.student_id = ");
-	//$stmt=$mysqli->query("SELECT * FROM course_section");
 
 ?>
 <!doctype html>
@@ -112,6 +97,14 @@
 		
 			<div class="tableStyle">
 				<?php
+				/**fetchCourseRows
+			   * this if, while loop takes the query above for
+			   * the student's classes
+			   * and calls all the rows and assigns to a variable
+			   * which is then echoed out into tables
+			   * Void
+			   */
+
 					if($stmt->num_rows != 0)
 					{
 

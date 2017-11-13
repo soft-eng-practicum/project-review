@@ -4,16 +4,14 @@
 	
 	ggc_session();
 	
-	//$stmt=$mysqli->query("SELECT * FROM course WHERE course_id =" .$_GET['course']);
-	
-	//Important SQL statement
-	//$stmt=$mysqli->query("SELECT * FROM course JOIN user WHERE course_id =" .$_GET['course'] . "AND course.professor_id = user.user_id");
-	
-	
-	//$stmt=$mysqli->query("SELECT * FROM user JOIN class WHERE user.user_id = class.student_id");
-	//$projstmt=$mysqli->query("SELECT * FROM course JOIN project WHERE course_id=" .$_GET['course'] . "AND course.course_id = project.course_id");
-	//$projstmt=$mysqli->query("SELECT * FROM project WHERE project.course_id =" .$_GET['course']);
-	//$projstmt=$mysqli->query("SELECT * FROM submission WHERE submission.course_id =" .$_GET['project']);
+	/**ProjectDash
+   * This page covers everything that is specifically relevant to the
+   * project picked in the Class Dash. this page contains the review
+   * link and the algorithm that is to cycle through the appropriate
+   * projects to review for the current user. Submissions will also be allowed
+   * on this page.
+   */
+
 	$stmt=$mysqli->query("SELECT * FROM user JOIN class ON user.user_id = class.student_id WHERE user.user_id = '$_SESSION[user_id]'");
 ?>
 
@@ -31,33 +29,6 @@
 	<?php if($_SESSION['s_code']==5||$_SESSION['s_code']==3){?>
 	<h1>You are an student</h1>
 	
-	
-	<?php
-	/*
-		if($projstmt->num_rows != 0)
-		{
-			while($rows = $projstmt->fetch_assoc())
-			{
-				$id = $rows['course_id'];
-				$name = $rows['name'];
-				
-				
-				echo "
-				<table>
-					<tr>
-						<td>
-							$id
-						</td>
-						<td>
-							<a href = ./ProjectDash.php?project='$id'>$name</a>
-						</td>
-					</tr>
-				</table>
-				";
-			}
-		}
-	*/
-	?>
 	<?php }?>
 	
 	<?php if($_SESSION['s_code']==3){?>

@@ -3,6 +3,14 @@
 	include_once 'includes/security.php';
 	ggc_session();
 	
+	/**ReviewPageinc
+   * This page takes data from the form in ReviewPage,
+   * prepares SQL statements based on that data, and inserts
+   * that data into the Review Table in the MySQL database
+   * with the associated submissions.
+   */
+
+	
 	date_default_timezone_set('America/New_York');
 	$date = date('Y/m/d', time());
 	

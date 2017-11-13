@@ -4,47 +4,12 @@
 	
 	ggc_session();
 	
-	//$carry = $_GET['course'];
-	
-	//echo "$carry";
-	/*
-	if(isset($_GET['name']))
-	{
-		$firstName1=$_GET['name'];
-		$lastName1=$_GET['due_date'];
-		//$course_id1=preg_replace("/[^0-9]+/", "", $_GET['course_id']);
-		
-		$insert_stmt = $mysqli->prepare("INSERT INTO user (professor_id, course_id, name, due_date) VALUES (?,?,?,?)");
-		$insert_stmt->bind_param('iiss', $_SESSION['user_id'], $carry, $projName1, $due_date1);
-		$insert_stmt->execute();
-	}
-	if (isset($_GET['delete_id']))
-	{
-		//$userID2=$_POST['delete_id'];
-		$userID2=preg_replace("/[^0-9]+/", "", $_GET['delete_id']);
-		
-		$profFirstName2=$_GET['delete_firstname'];
-		$profLastName2=$_GET['delete_lastname'];
-		
-		echo "".$userID2."<br/>".$profFirstName2."<br/>".$profLastName2."";
-		echo "potato";
-		$delete_stmt= $mysqli->query("DELETE FROM user WHERE 
-		user_id = $userID2");
-		try
-		{
-			$delete_stmt->prepare();
-		}
-		catch (Exception $e)
-		{
-			echo "you scrub";
-		}
-		
-			$delete_stmt->execute();
-			
-		echo "AND firstname = $profFirstName2 AND lastname = $profLastName2";
-	}
-	*/
-	//$stmt= $mysqli->query("SELECT * FROM project WHERE project.course_id =" .$_GET['course']);
+	/**EditProf
+   * This page shows tables to the administrator, and takes entries that'll
+   * be passed into EditProfinc for processing into the MySQL database. 
+   * Admins will be able to add, remove, and edit(UPDATE) professors.
+   */
+
 	$stmt= $mysqli->query("SELECT * FROM user WHERE s_code = 3");
 	
 	echo "This is Edit Professor File";
