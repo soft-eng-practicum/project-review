@@ -138,7 +138,10 @@
 								-->
 								
 								<input name='delete_id' value='$course_id' 	hidden='true'>
+								<!--
 								<button type='submit' class='buttonStyleDel' name='submit_delete' value='X' onclick='loginhash(this.form, this.form.password);'>X</button>
+								-->
+								<button type='submit' class='buttonStyleDel' name='submit_delete' value='X' onclick='return confirm(\"$confirm_text\")';>X</button>
 								</form>
 							</div>
 						</div>
