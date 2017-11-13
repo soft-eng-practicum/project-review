@@ -4,14 +4,15 @@
 	
 	ggc_session();
 	
-	//$stmt=$mysqli->query("SELECT * FROM course WHERE course_id =" .$_GET['course']);
+	/**ClassDash
+   * This page looks at the user's s_code for the content and
+   * features that will be available. Otherwise, it will show all the projects
+   * relevant to that class.
+   */
 	
 	//Important SQL statement
 	$stmt=$mysqli->query("SELECT * FROM course JOIN user WHERE course_id =" .$_GET['course'] . "AND course.professor_id = user.user_id");
 	
-	
-	//$stmt=$mysqli->query("SELECT * FROM user JOIN class WHERE user.user_id = class.student_id");
-	//$projstmt=$mysqli->query("SELECT * FROM course JOIN project WHERE course_id=" .$_GET['course'] . "AND course.course_id = project.course_id");
 	$projstmt=$mysqli->query("SELECT * FROM project WHERE project.course_id =" .$_GET['course']);
 ?>
 
@@ -66,45 +67,6 @@
 						</a>
 					</div>
 					";
-				
-				/*
-				echo "
-				
-				<table>
-					<tr>
-						<td>
-							$id
-						</td>
-						<td>
-							<a href = ./ProjectDash.php?project='$id'>$name</a>
-						</td>
-					</tr>
-				</table>
-				";
-				
-				echo "
-				
-				<tr>
-					<td>
-						$id
-					</td>
-					<td>
-						$name
-					</td>
-					<td>
-						$prof
-					</td>
-					<td>
-						$sec
-					</td>
-					<td>
-						$semester
-					</td>
-					<td>
-						$profName
-					</td>
-				</tr>";
-				*/
 			}
 		}
 	?>
