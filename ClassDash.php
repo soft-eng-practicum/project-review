@@ -95,7 +95,7 @@
 			
 		<div class = "tableContainer">	
 			<div class = "tableContent">
-				<h3>Add Student</h3>
+				<h3><a href="./professor/student_reg.php">Add Student</a></h3>
 			</div>
 		</div>
 		
