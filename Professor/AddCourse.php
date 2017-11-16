@@ -6,7 +6,14 @@
 	
 	//$carry = $_GET['course'];
 	
-	$stmt= $mysqli->query("SELECT * FROM course WHERE professor_id = " .$_SESSION['user_id']);
+	if ($_SESSION['s_code'] == 1)
+	{
+		$stmt= $mysqli->query("SELECT * FROM course");
+	}
+	else
+	{
+		$stmt= $mysqli->query("SELECT * FROM course WHERE professor_id = " .$_SESSION['user_id']);
+	}
 	
 	/*echo "This is Add Course File";*/
 ?>
@@ -50,6 +57,19 @@
 						</label>
 						<input type="text" class="form-control" name="semester">
 					</div>
+					<?php
+					if ($_SESSION['s_code'] == 1)
+						{
+							echo '<div class="form-group" style="width:90%; margin-left:auto; margin-right:auto;">
+						<label for="professor_email">
+							<strong>
+								Professor Email:
+							</strong>
+						</label>
+						<input type="text" class="form-control" name="professor_email">
+					</div>';
+						}
+					?>
 						<!--<input type="text" class="form-control" name="course_id" value="<?php //echo $carry;?>" hidden="true"> -->
 					<!--<input type="submit" name="submit" value="Submit Record" class="btn btn-primary">-->
 					
