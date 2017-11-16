@@ -105,11 +105,11 @@
 	</div>	
 	
 	<div class="basicStyle">
-	<h1>You are a student</h1>
+	<h1>Project Submissions and Reviews</h1>
 	
 	<div class="tableStyle">
 	<?php
-		/**fetchProjectRows
+		/**fetchGradeProjectRows
 	   * this if, while loop takes the query above for
 	   * the student's classes
 	   * and calls all the rows and assigns to a variable

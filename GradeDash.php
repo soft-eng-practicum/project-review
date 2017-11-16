@@ -17,6 +17,13 @@
 ?>
 
 <?php
+	
+	/**fetchSubmissionRows
+   * fetches the submissions according to the passed course and project
+   * variables and displays all the submissions the professor clicked on
+   * before they entered that page.
+   * Void
+   */
 	if($stmt->num_rows != 0)
 	{
 		while($rows = $stmt->fetch_assoc())
@@ -30,13 +37,21 @@
 					<h1>Submission</h1>
 
 					<h3>$sub_id</h3>
+					
 					<h3>$stu_id</h3>
+					
 					<h3>$proj_id</h3>
 					
 					<a href=$link target='_blank'><td>$link</td></a>
 				
 			";
 			
+			/**fetchReviewRows
+		   * fetches the review rows using the variable from the last loop
+		   * being it grabs the submission id and grabs all the reviews for
+		   * those submissions
+		   * Void
+		   */
 			$revstmt=$mysqli->query("SELECT * FROM review WHERE review.submission_id = ".$sub_id);
 
 			if ($revstmt->num_rows != 0)
