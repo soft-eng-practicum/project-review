@@ -14,7 +14,7 @@
 	//reset the time zone
 	//date_default_timezone_set('America/New_York');
 	//$date = date('m/d/Y h:i:s a', time());
-	//$date = date('m/d/Y', time());
+	$date = date('m/d/Y', time());
 	$classStmt=$mysqli->query("SELECT * FROM course JOIN user WHERE course_id =" .$_GET['course']);
 	
 	$course_id = preg_replace("/[^0-9]+/", "", $_GET['course']);

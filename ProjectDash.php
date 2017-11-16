@@ -28,6 +28,7 @@
 	
 	<?php if($_SESSION['s_code']==5||$_SESSION['s_code']==3){?>
 	<h1>You are an student</h1>
+	<a href = "ReviewPage.php?course=<?php echo $_GET['course'];?>&project=<?php echo $_GET['project'];?>">Take Review</a>
 	
 	<?php }?>
 	

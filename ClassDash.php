@@ -57,12 +57,13 @@
 		{
 			while($rows = $projstmt->fetch_assoc())
 			{
-				$id = $rows['course_id'];
-				$name = $rows['name'];
+				$id = preg_replace("/[^0-9]+/", "", $rows['course_id']);
+				$projid = preg_replace("/[^0-9]+/", "", $rows['project_id']);
+				$name = preg_replace("/[^0-9]+/", "", $rows['name']);
 				
 				echo "
 					<div class = 'tableContainer'>
-						<a href = ./ProjectDash.php?project='$id'>
+						<a href = ./ProjectDash.php?course='$id'&project='$projid'>
 						<!--
 							<div class = 'tableContent'>
 								<h4>$id</h4>
