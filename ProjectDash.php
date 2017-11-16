@@ -34,8 +34,7 @@
 	
 	<?php if($_SESSION['s_code']==3){?>
 		<h1>You are an professor</h1>
-		<h2>Add Project</h2>
-		<h2>Add Student</h2>
+		
 		
 	<?php }?>
 	

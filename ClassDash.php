@@ -55,6 +55,8 @@
 	   */
 		if($projstmt->num_rows != 0)
 		{
+			
+			
 			while($rows = $projstmt->fetch_assoc())
 			{
 				$id = preg_replace("/[^0-9]+/", "", $rows['course_id']);
@@ -101,6 +103,50 @@
 		</div>
 		
 	</div>	
+	
+	<div class="basicStyle">
+	<h1>You are a student</h1>
+	
+	<div class="tableStyle">
+	<?php
+		/**fetchProjectRows
+	   * this if, while loop takes the query above for
+	   * the student's classes
+	   * and calls all the rows and assigns to a variable
+	   * which is then echoed out into tables
+	   * Void
+	   */
+	    $stmt=$mysqli->query("SELECT * FROM course JOIN user WHERE course_id =" .$_GET['course'] . "AND course.professor_id = user.user_id");
+	
+		$projstmt=$mysqli->query("SELECT * FROM project WHERE project.course_id =" .$_GET['course']);
+	   
+		if($projstmt->num_rows != 0)
+		{
+			while($rows = $projstmt->fetch_assoc())
+			{
+				$id = preg_replace("/[^0-9]+/", "", $rows['course_id']);
+				$projid = preg_replace("/[^0-9]+/", "", $rows['project_id']);
+				$name = preg_replace("/[^0-9]+/", "", $rows['name']);
+				
+				echo "
+					<div class = 'tableContainer'>
+						<a href = ./GradeDash.php?course='$id'&project='$projid'>
+						<!--
+							<div class = 'tableContent'>
+								<h4>$id</h4>
+							</div>
+						-->	
+							<div class = 'tableContent'>
+								<h3>$name</h3>
+							</div>
+						</a>
+					</div>
+					";
+			}
+		}
+	?>
+	</div>
+	</div>
 	<?php }?>
 	
 	
