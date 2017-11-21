@@ -78,7 +78,7 @@
 				
 				<div class="tableStyle">
 					<a href = "./Admin/EditProf.php"><h2>Add/Remove Professor</h2></a>
-					<a href = "./Admin/EditCourse.php"><h2>Add/Remove Course</h2></a>
+					<a href = "./Professor/AddCourse.php"><h2>Add/Remove Course</h2></a>
 				</div>
 			</div>
 		<?php }?>
