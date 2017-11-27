@@ -61,7 +61,7 @@
 			{
 				$id = preg_replace("/[^0-9]+/", "", $rows['course_id']);
 				$projid = preg_replace("/[^0-9]+/", "", $rows['project_id']);
-				$name = preg_replace("/[^0-9]+/", "", $rows['name']);
+				$name = $rows['name'];
 				
 				echo "
 					<div class = 'tableContainer'>
@@ -126,7 +126,7 @@
 			{
 				$id = preg_replace("/[^0-9]+/", "", $rows['course_id']);
 				$projid = preg_replace("/[^0-9]+/", "", $rows['project_id']);
-				$name = preg_replace("/[^0-9]+/", "", $rows['name']);
+				$name = $rows['name'];
 				
 				echo "
 					<div class = 'tableContainer'>
