@@ -33,7 +33,31 @@
 			$stu_id = $rows['student_id'];
 			$proj_id = $rows['project_id'];
 			$link = $rows['link'];
+			
+			/**fetchStudentRows
+		   * fetches the student's first name and last name
+		   * based on the information in the outer loop
+		   * Void
+		   */
+			$stuStmt=$mysqli->query("SELECT * FROM user WHERE user_id = " . $stu_id);
+			if ($stuStmt->num_rows != 0)
+			{
+				while($rows = $stuStmt->fetch_assoc())
+				{
+					$stuFirstName = $rows['firstname'];
+					$stuLastName = $rows['lastname'];
+					
+					echo
+					"
+						<h1>SUBMISSION</h1>
+						<h2>$stuFirstName</h2>
+						<h2>$stuLastName</h2>
+					";
+				}
+			}
+			
 			echo "
+				<!--
 					<h1>Submission</h1>
 
 					<h3>$sub_id</h3>
@@ -41,10 +65,45 @@
 					<h3>$stu_id</h3>
 					
 					<h3>$proj_id</h3>
+				-->
+					
 					
 					<a href=$link target='_blank'><td>$link</td></a>
 				
 			";
+			
+			/**fetchFinalGradeRows
+		   * calculates the submissions grade based on
+		   * a fetch of the reviews off that submission
+		   * Void
+		   */
+			$revstmt=$mysqli->query("SELECT * FROM review WHERE review.submission_id = ".$sub_id);
+			if ($revstmt->num_rows != 0)
+			{
+				$requirementsGrade = 0;
+				$satisfactionGrade = 0;
+				$incrementer = 0;
+				while($rows = $revstmt->fetch_assoc())
+				{
+					$rev_id = $rows['review_id'];
+					$stu_id = $rows['student_id'];
+					$first = $rows['first'];
+					$second = $rows['second'];
+					$comment = $rows['comment'];
+					
+					$requirementsGrade += $first;
+					$satisfactionGrade += $second;
+					$incrementer++;
+				}
+				$requirementsGrade/=$incrementer;
+				$satisfactionGrade/=$incrementer;
+				echo "
+				
+						<h2>Requirements Grade: $requirementsGrade / 5</h2>
+						<h2>Satisfaction Grade: $satisfactionGrade / 5</h2>
+				
+				";
+			}
 			
 			/**fetchReviewRows
 		   * fetches the review rows using the variable from the last loop
@@ -63,18 +122,40 @@
 					$first = $rows['first'];
 					$second = $rows['second'];
 					$comment = $rows['comment'];
+					
+					/**fetchStudentRows
+				   * fetches the student's first name and last name
+				   * based on the information in the outer loop
+				   * Void
+				   */
+					$stuStmt=$mysqli->query("SELECT * FROM user WHERE user_id = " . $stu_id);
+					if ($stuStmt->num_rows != 0)
+					{
+						while($rows = $stuStmt->fetch_assoc())
+						{
+							$stuFirstName = $rows['firstname'];
+							$stuLastName = $rows['lastname'];
+							
+							echo
+							"
+								<h3>$stuFirstName</h2>
+								<h3>$stuLastName</h2>
+							";
+						}
+					}
+					
 					echo "
 							<h2>Review</h2>
-
+						<!--
 							<td>$rev_id</td>
 						
 							<td>$stu_id</td>
+						-->
+							<h3>Requirements Rating: $first</h3>
 						
-							<td>$first</td>
+							<h3>Satisfaction Rating: $second</h3>
 						
-							<td>$second</td>
-						
-							<td>$comment</td>
+							<h3>Comment: $comment</h3>
 					";
 				}
 			}
