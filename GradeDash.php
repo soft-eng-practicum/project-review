@@ -16,14 +16,27 @@
 	
 ?>
 
+<!doctype html>
+<html>
+<head>
+	<title>Grades Dash</title>
+	<link href="./css/bootstrap.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/MainStyle.css" />
+</head>
+
+<body>
+<div id="container">
 <?php
 	
-	/**fetchSubmissionRows
-   * fetches the submissions according to the passed course and project
-   * variables and displays all the submissions the professor clicked on
-   * before they entered that page.
-   * Void
-   */
+ 	/**fetchSubmissionRows
+    * fetches the submissions according to the passed course and project
+    * variables and displays all the submissions the professor clicked on
+    * before they entered that page.
+    * Void
+    */
+    echo "<div class=\"basicStyle\">";
+    
+   
 	if($stmt->num_rows != 0)
 	{
 		while($rows = $stmt->fetch_assoc())
@@ -163,4 +176,7 @@
 		}
 	}
 	
+	echo "</div>";
 ?>
+</div>
+</body>

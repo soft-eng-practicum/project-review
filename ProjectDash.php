@@ -15,30 +15,47 @@
 	$stmt=$mysqli->query("SELECT * FROM user JOIN class ON user.user_id = class.student_id WHERE user.user_id = '$_SESSION[user_id]'");
 ?>
 
+<!doctype html>
+<html>
+<head>
+	<title>Project Dash</title>
+	<link href="./css/bootstrap.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/MainStyle.css" />
+</head>
+
+<body>
 <?php if (login_checker($mysqli) == true) : ?>
-<?php echo "<h1>Welcome " . $_SESSION['firstname'] . "! You are logged in!</h1><br/>
+
+<?php echo "<div class=\"title\"><h1>Welcome " . $_SESSION['firstname'] . "! You are logged in!</h1></div><br/>
+			<div id=\"container\">
 			<h2>Project Dash</h2>";?>
 	
 	<?php if($_SESSION['s_code']==1){?>
+	<div class="basicStyle">
 	<h1>You are an admin</h1>
+	</div>
 	<?php }?>
 	
 	
 	
 	
 	<?php if($_SESSION['s_code']==5||$_SESSION['s_code']==3){?>
-	<h1>You are an student</h1>
+	<div class="basicStyle">
+	<h1>You are a student</h1>
 	<a href = "ReviewPage.php?course=<?php echo $_GET['course'];?>&project=<?php echo $_GET['project'];?>">Take Review</a>
-	
+	</div>
 	<?php }?>
 	
 	<?php if($_SESSION['s_code']==3){?>
-		<h1>You are an professor</h1>
+	<div class="basicStyle">
+		<h1>You are a professor</h1>
+	</div>
 		
 		
 		
 	<?php }?>
-	
+	</div>
+</body>	
 	
 	
 <?php else : ?>
