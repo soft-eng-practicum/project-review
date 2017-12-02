@@ -1,0 +1,18 @@
+# Project Review FAQ
+
+## Students
+#### How do I link to my project?
+* Once you're logged in and in your User Dash, click on the course your project is in, then click on the name of the project you want to upload. Paste your link into the box and click Submit Record.You cannot upload files to Project Review.
+#### How do I review other students’ projects?
+* From your User Dash, click on the course your project is in, then click on the name of the project you want to review. Click Take Review to begin a new review.
+
+## Professors
+#### How do I access my course information?
+* Simply click on the course you wish to view in your User Dash.
+#### How do I delete a course or a project from the system?
+* To delete a course, go to the Add Course page and click on the "X" next to the course you wish to delete.
+* To delete a project, go to the course page, then the Add Project page. Click on the "X" next to the project you wish to delete.
+
+## Admins
+#### How do I delete a professor or a course from the system?
+* In the corresponding Add/Remove Professor or Course page, click on the "X" next to the entry you wish to delete.
