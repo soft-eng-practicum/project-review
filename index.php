@@ -37,6 +37,7 @@
 				<input type="password" class="form-control" name="password" id="password" placeholder="Password">
 				<!--"btn btn-primary"-->
 				<button type="submit" class="buttonStyle" value="Login" onclick="loginhash(this.form, this.form.password);" style="margin-top:40px;">Log-in</button>
+				<button type="button" class="buttonStyle" value="FAQ" onclick="location.href='FAQ.html'" style="margin-top:40px;">Help</button>
 			</form>
 		</div>
 	</div>
