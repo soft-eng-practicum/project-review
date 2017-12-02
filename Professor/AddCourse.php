@@ -30,6 +30,8 @@
 	
 	<body>
 		<div id="container">
+		
+			<h1>Add New Course</h1>
 			
 			<div class="basicStyle">
 				<form action="AddCourseinc.php" method="get">
@@ -77,6 +79,7 @@
 				</form>
 			</div>
 			
+			<h1>Existing Courses</h1>
 			<div class="basicStyle">
 				<div class="tableStyle">
 					<div class="tableContainer">
@@ -96,34 +99,6 @@
 							<h4 style="font-size:18px;">Delete?</h4>
 						</div>
 					</div>
-				
-			
-		<!--
-			<div class="col-md-6">
-			<table class="table table-hover">
-				<tr>
-					<td>
-						<strong>
-							Course Name
-						</strong>
-					</td>
-					<td>
-						<strong>
-							Section
-						</strong>
-					</td>
-					<td>
-						<strong>
-							Semester
-						</strong>
-					</td>
-					<td>
-						 <strong>
-							Delete?
-						</strong>
-					</td>
-				</tr>
-			-->
 <?php
 				if($stmt->num_rows != 0)
 				{
@@ -165,26 +140,6 @@
 								</form>
 							</div>
 						</div>
-						
-						<!--
-						<tr>
-							<td>
-								$course_name
-							</td>
-							<td>
-								$section
-							</td>
-							<td>
-								$semester
-							</td>
-							<td>
-								<form action='AddCourseinc.php?' method='post' id='delete_btn'>
-									<input name='delete_id' value='$course_id' 	hidden='true'>
-									<input type='submit' name='submit_delete' value='X' class='btn btn-danger pull-right' onclick='return confirm(\"$confirm_text\")';>
-								</form>
-							</td>
-						</tr>
-						-->
 						";
 					}
 				}

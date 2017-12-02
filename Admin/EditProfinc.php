@@ -9,35 +9,27 @@
    * either removing, adding, or updating the MySQL database.
    */
 	
-	if (isset($_GET['delete_id']))
+	if (isset($_GET['prof_email']))
 	{
-		//$userID2=$_POST['delete_id'];
-		$userID2=preg_replace("/[^0-9]+/", "", $_GET['delete_id']);
+		$prof_email1=$_GET['prof_email'];
+		$prof_firstname1=$_GET['firstname'];
+		$prof_lastname1=$_GET['lastname'];
+		$prof_code = 3;
 		
-		$profFirstName2=$_GET['delete_firstname'];
-		$profLastName2=$_GET['delete_lastname'];
+		$insert_stmt = $mysqli->prepare("INSERT INTO user (firstname, lastname, email, s_code) VALUES (?,?,?,?)");
+		$insert_stmt->bind_param('sssi', $prof_firstname1, $prof_lastname1, $prof_email1, $prof_code);
 		
-		echo "".$userID2."<br/>".$profFirstName2."<br/>".$profLastName2."";
-		echo "potato";
-		//$delete_stmt->prepare();
-		
-		$delete_stmt= $mysqli->query("DELETE FROM user WHERE user_id = '$userID2' AND firstname = '$profFirstName2' AND lastname = '$profLastName2'");
-		if ($mysqli->query($delete_stmt) == TRUE)
-		{
-			echo "the delete worked";
-		}
-		else
-		{
-			echo "oh shit, the delete failed";
-		}
-		
-		
-		//$delete_stmt->execute();
-			
-		echo "AND firstname = $profFirstName2 AND lastname = $profLastName2";
+		$insert_stmt->execute();
 		
 		header ('Location: ./EditProf.php');
 		exit();
-		
+	}
+	//Code for delete button in table
+	if (isset($_POST['delete_id']))
+	{
+		$user_id2=$_POST['delete_id'];
+		$delete_stmt= $mysqli->query("DELETE FROM user WHERE user_id = '$user_id2'");
+		header ('Location: ./EditProf.php');
+		exit();
 	}
 ?>
