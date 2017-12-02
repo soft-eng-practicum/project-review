@@ -17,7 +17,9 @@
 		echo "oh shit";
 	}
 
-	$stmt=$mysqli->query("SELECT * FROM user JOIN class JOIN course ON user.user_id = class.student_id AND class.course_id = course.course_id WHERE user.user_id = '$_SESSION[user_id]'");
+	$stmt= $mysqli->query("SELECT * FROM course WHERE professor_id = " .$_SESSION['user_id']);
+	
+	/*$stmt=$mysqli->query("SELECT * FROM user JOIN class JOIN course ON user.user_id = class.student_id AND class.course_id = course.course_id WHERE user.user_id = '$_SESSION[user_id]'");*/
 
 ?>
 <!doctype html>
@@ -110,9 +112,9 @@
 
 						while($rows = $stmt->fetch_assoc())
 						{
-							$user_id = $rows['user_id'];
-							$firstname = $rows['firstname'];
-							$lastname = $rows['lastname'];
+							//$user_id = $rows['user_id'];
+							//$firstname = $rows['firstname'];
+							//$lastname = $rows['lastname'];
 							$course_ID = $rows['course_id'];
 							$course_name = $rows['name'];
 							$semester = $rows['semester'];
