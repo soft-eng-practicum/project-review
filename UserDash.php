@@ -89,7 +89,9 @@
 		<?php if($_SESSION['s_code']==3){?>
 		<div class="basicStyle">
 			<h1>You are a professor</h1>
-			<a href = "./Professor/AddCourse.php"><h2>Add/Remove Course</h2></a>
+			<div class="tableStyle">
+				<a href = "./Professor/AddCourse.php"><h2>Add/Remove Course</h2></a>
+			</div>
 			<h1>Courses</h1>
 		<!--
 		</div>

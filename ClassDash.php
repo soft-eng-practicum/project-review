@@ -90,16 +90,19 @@
 	<div class="basicStyle">
 		<h1>You are a professor</h1>
 		
-		<div class = "tableContainer">
-			<div class = "tableContent">
-				<a href = "./Professor/AddProj.php?course=<?php echo $_GET['course'];?>"><h3>Add Project</h3></a>
+		<div class="tableStyle">
+			<div class = "tableContainer">
+				<div class = "tableContent">
+					<a href = "./Professor/AddProj.php?course=<?php echo $_GET['course'];?>"><h3>Add Project</h3></a>
+				</div>
+			</div>	
+				
+			<div class = "tableContainer">	
+				<div class = "tableContent">
+					<a href="./professor/student_reg.php"><h3>Add Student</h3></a>
+				</div>
 			</div>
-		</div>	
-			
-		<div class = "tableContainer">	
-			<div class = "tableContent">
-				<a href="./professor/student_reg.php"><h3>Add Student</h3></a>
-			</div>
+		
 		</div>
 		
 	</div>	
