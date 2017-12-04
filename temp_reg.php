@@ -38,9 +38,10 @@ if (isset($_POST['fname'], $_POST['lname'], $_POST['phone'], $_POST['email'], $_
 
         // Create salted password 
         $password = hash('sha512', $password . $salt);
-        if ($insert_stmt = $mysqli->prepare("INSERT INTO user (firstname, lastname, phone, email, carrier, password, salt) VALUES (?, ?, ?, ?, ?, ?, ?)")) 
+        if ($insert_stmt = $mysqli->prepare("INSERT INTO user (firstname, lastname, phone, email, carrier, password, salt, s_code) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")) 
 		{
-            $insert_stmt->bind_param('sssssss', $fname, $lname, $phone, $email, $carrier,  $password, $salt);
+            $scode= 3;
+			$insert_stmt->bind_param('sssssssi', $fname, $lname, $phone, $email, $carrier,  $password, $salt, $scode);
             if (! $insert_stmt->execute()) 
 			{
                 header("Location: ../error.php?message=can_you_remind_me_how_to_register_someone.lol");

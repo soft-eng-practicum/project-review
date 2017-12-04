@@ -36,8 +36,9 @@
 				<h4 style="margin-top:40px;">Password:</h4>
 				<input type="password" class="form-control" name="password" id="password" placeholder="Password">
 				<!--"btn btn-primary"-->
+				<a href="./forgot_password.php" class="buttonStyle" style="margin-top:40px;">Forgot Password</a>
+				<a href="./FAQ.html" class="buttonStyle" style="margin-top:40px;">FAQ</a>
 				<button type="submit" class="buttonStyle" value="Login" onclick="loginhash(this.form, this.form.password);" style="margin-top:40px;">Log-in</button>
-				<button type="button" class="buttonStyle" value="FAQ" onclick="location.href='FAQ.html'" style="margin-top:40px;">Help</button>
 			</form>
 		</div>
 	</div>

@@ -3,48 +3,47 @@
 	include_once 'includes/security.php';
 	ggc_session();
 	
-	/**ReviewPageinc
-   * This page takes data from the form in ReviewPage,
+	/**add submission
+   * This page takes data from the form in project dash,
    * prepares SQL statements based on that data, and inserts
-   * that data into the Review Table in the MySQL database
+   * that data into the submission Table in the MySQL database
    * with the associated submissions.
    */
 
 	
 	date_default_timezone_set('America/New_York');
-	$date = date('Y/m/d', time());
+	$date = date('F j, Y, g:i a');
 	
 	
 	
 	
-if(isset($_GET['link']))
+if(isset($_POST['link']))
 	{
-		$link = $_GET['link'];
-		$course = $_GET['course'];
-		$project = $_GET['project'];
+		$link = $_POST['link'];
+		$course = $_POST['course'];
+		$project = $_POST['project'];
 		
-		$stmt=$mysqli->query("SELECT * FROM submission where project_id = ".$_GET['project']. "AND student_id = " .$_SESSION[user_id]);
+		echo($link."<br> ottno ".$course."<br> ottno ".$project);
 		
-		if($stmt->num_rows = 0)
+		$stmt=$mysqli->query("SELECT * FROM submission WHERE project_id = '$project' AND student_id = " .$_SESSION['user_id']);
+		
+		if($stmt->num_rows == 0)
 		{
 			$insert_stmt = $mysqli->prepare("INSERT INTO submission (student_id, project_id, time, link) VALUES (?,?,?,?)");
 			$insert_stmt->bind_param('iiss', $_SESSION['user_id'], $project, $date, $link);
 			$insert_stmt->execute();
 		}
-		else
+		if($stmt->num_rows < 0)
 		{
-			$submission_id;
+			$rows = $stmt->fetch_assoc();
+			$submission_id = $rows['submission_id'];
 			
-			while($rows = $projstmt->fetch_assoc())
-			{
-				$submission_id = preg_replace("/[^0-9]+/", "", $rows['submission_id']);
-			}
-			$insert_stmt = $mysqli->prepare("UPDATE INTO submission (submission_id, student_id, project_id, time, link) VALUES (?,?,?,?,?) WHERE user_id =". $_SESSION['user_id'] ." AND submission_id = ".$submission_id)
-			$insert_stmt->bind_param('iiiss', $submission_id, $_SESSION['user_id'], $project, $date, $link);
+			$insert_stmt = $mysqli->prepare("UPDATE INTO submission (time, link) VALUES (?,?) WHERE submission_id = '".$submission_id ."'");
+			$insert_stmt->bind_param('ss', $date, $link);
 			$insert_stmt->execute();
 		}
 		
-		header ('Location: ./ProjectDash.php?course='.$course_id.'&project='.project_id.'&complete=true');
+		header ("Location: ./ProjectDash.php?course=$course&project=$project&complete=true");
 		
 		exit();
 	}

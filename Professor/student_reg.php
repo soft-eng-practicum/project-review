@@ -3,7 +3,9 @@
 	include_once '../includes/security.php';
 	
 	ggc_session();
-
+	/**The profesors add students to class Page
+   * This page's purpose is to allow the professor to add students to his/her class via a csv.
+   */
 	
 ?>
 <!doctype html>
@@ -21,6 +23,7 @@
 		if(theone==1)
 			{
 				csv.hidden=false;
+				alert("This method requires your CSV from D2L to be set up in this order: OrgDefinedId,  Last Name, First Name, Email, and End-of-Line Indicator");
 			}
 		if(theone==2)
 			{
@@ -85,6 +88,7 @@
 </head>
 
 <body>
+<?php if (login_checker($mysqli) == true) : ?>
 <?php if(!isset($_GET['complete'])){?>
 	<div id="selection">
 		<button type="button" onClick="youdecide(1)">Upload via CSV</button>
@@ -92,15 +96,17 @@
 		&nbsp;
 		<button type="button" onClick="youdecide(2)">Add as Individual</button>
 	</div>
-	<form id="easy_way" action="./includes/student_reg_inc.php" method="post" hidden="true" enctype="multipart/form-data">
+	<form id="easy_way" action="./student_reg_inc.php" method="post" hidden="true">
 	<input type="file" name="csvFile" id="csvFile" onChange="Upload()">
 	<div id="csv_table">
 	
 	</div>
+	<input type="text" hidden="true" value="<?php echo $_GET['course']; ?>"name="courseID">
 	<input type="submit" name="submit">
 	</form>
 	
 	<form id="hard_way" action="./student_reg_inc.php" method="post" hidden="true">
+	<input type="text" hidden="true" value="<?php echo $_GET['course']; ?>" name="courseID">
 		<table>
 			<tr>
 				<td>
@@ -183,4 +189,15 @@
 </body>
 </html>
 
-
+<?php else : ?>
+	<?php echo "<h1>You can not see this page!</h1>";
+	echo 
+					$_SESSION['user_id']."<br>".
+					$_SESSION['firstname']."<br>".
+					$_SESSION['lastname']."<br>".
+                    $_SESSION['login_string']."<br>".
+					$_SESSION['email']."<br>".
+					$_SESSION['phone']."<br>".
+					$_SESSION['carrier']."<br>".
+					$_SESSION['s_code'];?>
+<?php endif; ?>	

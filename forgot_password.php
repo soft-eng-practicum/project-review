@@ -26,7 +26,7 @@
 				$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 				$message = '<html><body>';
 				$message .= '<h1>Please Click on the link below to reset your password</h1>';
-				$message .= '<a href="http://localhost/forgot_password.php?alpha=' . $email . '&beta=' . $beta . '">Reset My Password</a>';
+				$message .= '<a href="http://www.souciernd.com/projectreview/forgot_password.php?alpha=' . $email . '&beta=' . $beta . '">Reset My Password</a>';
 				$message .= "</body></html>";
 
 				mail($email,$subject,$message,$headers);

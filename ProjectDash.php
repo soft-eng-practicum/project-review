@@ -12,7 +12,7 @@
    * on this page.
    */
 
-	$stmt=$mysqli->query("SELECT * FROM user JOIN class ON user.user_id = class.student_id WHERE user.user_id = '$_SESSION[user_id]'");
+	$stmt=$mysqli->query("SELECT * FROM user JOIN class ON user.user_id = class.student_id WHERE user.user_id =".$_SESSION['user_id']);
 ?>
 
 <!doctype html>
@@ -41,19 +41,74 @@
 	
 	<?php if($_SESSION['s_code']==5||$_SESSION['s_code']==3){?>
 	<div class="basicStyle">
-	<h1>You are a student</h1>
-	<a href = "ReviewPage.php?course=<?php echo $_GET['course']?>&project=<?php echo $_GET['project'] ?>">Take Review</a>
-	<form action="AddSubmission.php?course=<?php echo $_GET['course'] ?>&project"<?php echo $_GET['project'] ?> method="get">
+		<h2>
+			Your Submission
+		</h2>
+		<?php
+	
+			$sub = $mysqli->query("SELECT * FROM submission WHERE student_id = '".$_SESSION['user_id']."' AND project_id = '".$_GET['project']."'");
+			if($sub->num_rows != 0)
+			{
+				$num = $sub->num_rows;
+				$rows = $sub->fetch_assoc();
+				
+				$link = $rows['link'];
+				$time = $rows['time'];
+
+				echo "
+				<div class = 'tableContainer'>
+					<div class = 'tableContent tc1'>
+						<h5><a href='$link'>Your Project Link</a> ---- Time Submited: $time</h5>
+					</div>
+				</div>
+				<hr width ='50%'>
+				";
+			}
+		?>
+		
+	<form action="AddSubmission.php" method="post">
 		<div class="form-group">
 			<label for="name">
 				<strong>
-					Link
+					To submit your link or to update Your Project Link
 				</strong>
-			</label>
-			<input type="text" class="form-control" name="link">
-			<input type="submit" name="submit" value="Submit Record" class="btn btn-primary">
+			</label><br>
+			<input type="text" name="link"><br><br>
+			<input type="text" name="course" hidden="true" value="<?php echo $_GET['course']?>">
+			<input type="text" name="project" hidden="true" value="<?php echo $_GET['project'] ?>">
+			<input type="submit" name="submit" value="Submit or Update Your Record" class="btn btn-default">
 		</div>
 	</form>
+	<hr width="50%">
+		<h2>
+			Your Reviews For This Project
+		</h2>
+		<?php
+	
+			$rev = $mysqli->query("SELECT * FROM submission JOIN review ON review.submission_id = submission.submission_id WHERE review.student_id = ".$_SESSION['user_id'] . " AND submission.project_id= ".$_GET['project']);
+			
+			if($rev->num_rows != 0)
+			{
+				$i=1;
+				while($row = $rev->fetch_assoc())
+				{
+					//var_dump($row) ;
+					$link = $row['link'];
+					$time = $row['time'];
+
+					echo "
+					<div class = 'tableContainer'>
+						<div class = 'tableContent tc1'>
+							<h5>$i )  <a href='$link'>Your Review</a> ---- Time Submited: $time</h5>
+						</div>
+					</div>
+					<hr width ='50%'>
+					";
+					$i++;
+				}				
+			}
+		?>
+		<a href = "ReviewPage.php?course=<?php echo $_GET['course']?>&project=<?php echo $_GET['project'] ?>"><h3>Take Review</h3></a>
 	<?php }?>
 	
 	<?php if($_SESSION['s_code']==3){?>

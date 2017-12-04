@@ -30,9 +30,9 @@
 	
 	<body>
 		<div id="container">
-		
-			<h1>Add New Course</h1>
-			
+			<h1>
+				Add Course
+			</h1>
 			<div class="basicStyle">
 				<form action="AddCourseinc.php" method="get">
 					<div class="form-group" style="width:90%; margin-left:auto; margin-right:auto;">
@@ -72,14 +72,11 @@
 					</div>';
 						}
 					?>
-						<!--<input type="text" class="form-control" name="course_id" value="<?php //echo $carry;?>" hidden="true"> -->
-					<!--<input type="submit" name="submit" value="Submit Record" class="btn btn-primary">-->
 					
 					<button type='submit' class='buttonStyle' style="font-size:22px; width:100px;" name='submit' value='Submit Record'>Submit</button>
 				</form>
 			</div>
 			
-			<h1>Existing Courses</h1>
 			<div class="basicStyle">
 				<div class="tableStyle">
 					<div class="tableContainer">
@@ -104,7 +101,7 @@
 				{
 					while($rows = $stmt->fetch_assoc())
 					{
-						$course_id = $rows['course_id'];
+						$course_id = $rows['course_ID'];
 						$course_name = $rows['name'];
 						$section = $rows['section'];
 						$semester = $rows['semester'];
@@ -140,6 +137,26 @@
 								</form>
 							</div>
 						</div>
+						
+						<!--
+						<tr>
+							<td>
+								$course_name
+							</td>
+							<td>
+								$section
+							</td>
+							<td>
+								$semester
+							</td>
+							<td>
+								<form action='AddCourseinc.php?' method='post' id='delete_btn'>
+									<input name='delete_id' value='$course_id' 	hidden='true'>
+									<input type='submit' name='submit_delete' value='X' class='btn btn-danger pull-right' onclick='return confirm(\"$confirm_text\")';>
+								</form>
+							</td>
+						</tr>
+						-->
 						";
 					}
 				}

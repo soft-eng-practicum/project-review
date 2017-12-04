@@ -176,7 +176,7 @@
 		}
 	}
 	
-	echo "</div>";
+	echo "<hr width='50%'></div>";
 ?>
 </div>
 </body>

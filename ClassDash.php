@@ -25,26 +25,26 @@
 </head>
 
 <body>
-<?php if (login_checker($mysqli) == true) : ?>
-<?php echo "<div class=\"title\"><h1>Welcome " . $_SESSION['firstname'] . "! You are logged in!</h1></div><br/>
-			<div id=\"container\">
-			<h2>Class Dash</h2>";?>
-	
-	
-	<?php if($_SESSION['s_code']==1){?>
+	<?php if (login_checker($mysqli) == true) : ?>
+		<?php echo 
+			"<div class='title'>
+				<h1>Welcome " . $_SESSION['firstname'] . "! You are logged in!</h1>
+			</div><br/>";
+		?>
+			
+			<div id="container">
+				<h1>Class Dash</h1>
+				
+<?php if($_SESSION['s_code']==5||$_SESSION['s_code']==3){?>
 	<div class="basicStyle">
-	<h1>You are an admin</h1>
-	</div>
+	<h2>Projects</h2>
+	<?php if($_SESSION['s_code']==3){?>
+		<div class = "tableContainer">
+			<div class = "tableContent">
+				<a href = "./Professor/AddProj.php?course=<?php echo $_GET['course'];?>"><h5>Add Project</h5></a>
+			</div>
+		</div>	
 	<?php }?>
-	
-	
-	
-	
-	<?php if($_SESSION['s_code']==5 /*||$_SESSION['s_code']==3*/){?>
-	<div class="basicStyle">
-	<h1>You are a student</h1>
-	<h1>Projects</h1>
-	
 	<div class="tableStyle">
 	<?php
 		/**fetchProjectRows
@@ -56,8 +56,6 @@
 	   */
 		if($projstmt->num_rows != 0)
 		{
-			
-			
 			while($rows = $projstmt->fetch_assoc())
 			{
 				$id = preg_replace("/[^0-9]+/", "", $rows['course_id']);
@@ -66,12 +64,7 @@
 				
 				echo "
 					<div class = 'tableContainer'>
-						<a href = ./ProjectDash.php?course='$id'&project='$projid'>
-						<!--
-							<div class = 'tableContent'>
-								<h4>$id</h4>
-							</div>
-						-->	
+						<a href = ./ProjectDash.php?course=$id&project=$projid>
 							<div class = 'tableContent'>
 								<h3>$name</h3>
 							</div>
@@ -90,22 +83,34 @@
 	<?php if($_SESSION['s_code']==3){?>
 	<div class="basicStyle">
 		<h1>You are a professor</h1>
-		
-		<div class="tableStyle">
-			<div class = "tableContainer">
-				<div class = "tableContent">
-					<a href = "./Professor/AddProj.php?course=<?php echo $_GET['course'];?>"><h3>Add Project</h3></a>
-				</div>
-			</div>	
-				
-			<div class = "tableContainer">	
-				<div class = "tableContent">
-					<a href="./professor/student_reg.php"><h3>Add Student</h3></a>
-				</div>
+		<div class = "tableContainer">	
+			<div class = "tableContent">
+				<h3><a href="./Professor/student_reg.php?course=<?php echo $_GET['course']; ?>">Add Student</a></h3>
 			</div>
-		
 		</div>
-		
+		<?php
+		/**fetchclass roster
+	   * 
+	   */
+		$class_roster=$mysqli->query("SELECT * FROM class LEFT JOIN user ON class.student_id = user.user_id WHERE course_id =".$_GET['course']);
+		if($class_roster->num_rows != 0)
+		{
+			while($rows = $class_roster->fetch_assoc())
+			{
+				$firstname = $rows['firstname'];
+				$lastname = $rows['lastname'];
+				$email = $rows['email'];
+				
+				echo "
+					<div class = 'tableContainer'>
+						<div class = 'tableContent'>
+							<h6>$lastname, $firstname -------- $email</h6>
+						</div>
+					</div>
+					";
+			}
+		}
+	?>
 	</div>	
 	
 	<div class="basicStyle">
@@ -134,12 +139,7 @@
 				
 				echo "
 					<div class = 'tableContainer'>
-						<a href = ./GradeDash.php?course='$id'&project='$projid'>
-						<!--
-							<div class = 'tableContent'>
-								<h4>$id</h4>
-							</div>
-						-->	
+						<a href = ./GradeDash.php?course=$id&project=$projid>
 							<div class = 'tableContent'>
 								<h3>$name</h3>
 							</div>

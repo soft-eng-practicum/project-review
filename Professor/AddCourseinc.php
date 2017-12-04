@@ -3,11 +3,7 @@
 	include_once '../includes/security.php';
 	ggc_session();
 	
-	/**AddCourseinc
-	 * This class receives information from AddCourse and executes SQL
-	 * statements to either add, remove, or update the MYSQL database.
-	 */
-	if(isset($_GET['name']))
+if(isset($_GET['name']))
 	{
 		$course_name1=$_GET['name'];
 		$section1=$_GET['section'];

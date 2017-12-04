@@ -18,7 +18,38 @@
 	$classStmt=$mysqli->query("SELECT * FROM course JOIN user WHERE course_id =" .$_GET['course']);
 	
 	$course_id = preg_replace("/[^0-9]+/", "", $_GET['course']);
-	$project_id = preg_replace("/[^0-9]+/", "", $_GET['project']);
+	
+	$project= $_GET['project'];
+	
+	//check if you have any checked out reviews
+	$checkedout= $mysqli->query("SELECT * FROM review LEFT JOIN submission ON review.submission_id = submission.submission_id WHERE review.student_id = '".$_SESSION['user_id']."' AND review.first = 10 ");
+	if($checkedout->num_rows == 1)
+	{
+		$rows = $checkedout->fetch_assoc();
+		$submission_id = $rows['submission_id'];
+		$review_link = $rows['link'];
+	}
+	if($checkedout->num_rows == 0)
+	{
+		//select submissions from review avoiding the one you reviewed and the one you submited and ordered by the list
+		//echo $_SESSION['user_id'];
+		$sel_subs = $mysqli->query("SELECT submission.* ,COUNT(review.review_id) FROM submission LEFT JOIN review ON submission.submission_id = review.submission_id WHERE submission.project_id= $project AND submission.student_id <> ".$_SESSION['user_id']);
+		
+		//while($rows = $sel_subs->fetch_assoc())
+		//{ echo(var_dump($rows));}
+		$rows = $sel_subs->fetch_assoc();
+		$submission_id = $rows['submission_id'];
+		$review_link = $rows['link'];
+		
+		//find the people that have graded you
+		
+		$holder=10;
+		$holder2="The Review is still in progress.";
+		
+		//$insert=$mysqli->prepare("INSERT INTO review (submission_id, student_id, time, first, second, comment) VALUES (?, ?, ?, ?, ?, ?)");
+		//$insert->bind_param('iisiis', $submission_id, $_SESSION['user_id'], $date, $holder, $holder, $holder2 );
+		//$insert->execute();
+	}
 ?>
 <html>
 	<head>
@@ -29,6 +60,7 @@
 	</head>
 	
 	<body>
+	<?php if (login_checker($mysqli) == true) : ?>
 		<?php
 			//echo time();
 			echo $date;
@@ -37,40 +69,26 @@
 		?>
 		<div id="container">
 			<div id="header">
-				<!--<h1>Software Development 2</h1>-->
-				<!--<h2>Fall 2017</h2>-->
-				<!--<h3>Section 01</h3>-->
 				<?php
-				//I'll admit this is the most attrocious block of code I've ever written -Coker
-				if($classStmt->num_rows != 0)
-				{
-					$name;
-					$semester;
-					$section;
-					while($rows = $classStmt->fetch_assoc())
-					{
-						//I'll figure this out later, but this is super innefficient to grab one rows
-						//I already have my SELECT ready, but I don't know how to grab a singular row (I'm also out of patience)
-						$name = $rows['name'];
-						$semester = $rows['semester'];
-						$section = $rows['section'];
-					}
-					echo "<h1>$name</h1>";
-					echo "<h2>$semester</h2>";
-					echo "<h3>$section</h3>";
-				}
+				$rows = $classStmt->fetch_assoc();
+
+				$name = $rows['name'];
+				$semester = $rows['semester'];
+				$section = $rows['section'];
+
+				echo "<h1>$name</h1>";
+				echo "<h2>$semester</h2>";
+				echo "<h3>$section</h3>";
 				?>
 			</div>
 		
 			<div id="reviewcontents">
 				<div class="projectLink basicStyle">
-					<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Link to project</a>
-					<?php 
-						//This is where I need to grab the individual submission
-					?>
+					<a href="<?php echo($review_link); ?>" target="_blank">Link to project</a>
+					
 				</div>
 				
-				<form action = "ReviewPageinc.php" method = "get">
+				<form action = "ReviewPageinc.php" method = "post">
 					<div class="rating basicStyle">
 						<h3>Did the project meet the minimum requirements?</h3>
 						
@@ -136,12 +154,25 @@
 						<?php
 						echo 
 							"<input name='course' value='$course_id' hidden='true'>
-							<input name='project' value='$project_id' hidden='true'>" ;
+							<input name='sub' value='$submission_id' hidden='true'>
+							<input name='project' value='".$_GET['project']."' hidden='true'>" ;
 						?>
 					</div>
 					
 				</form>
 			</div>
 		</div>
+		<?php else : ?>
+	<?php echo "<h1>You can not see this page!</h1>";
+	echo 
+					$_SESSION['user_id']."<br>".
+					$_SESSION['firstname']."<br>".
+					$_SESSION['lastname']."<br>".
+                    $_SESSION['login_string']."<br>".
+					$_SESSION['email']."<br>".
+					$_SESSION['phone']."<br>".
+					$_SESSION['carrier']."<br>".
+					$_SESSION['s_code'];?>
+<?php endif; ?>	
 	</body>
 </html>
