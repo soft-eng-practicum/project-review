@@ -17,9 +17,9 @@
 		echo "oh shit";
 	}
 
-	$stmt= $mysqli->query("SELECT * FROM course WHERE professor_id = " .$_SESSION['user_id']);
+	/*$stmt= $mysqli->query("SELECT * FROM course WHERE professor_id = " .$_SESSION['user_id']);*/
 	
-	/*$stmt=$mysqli->query("SELECT * FROM user JOIN class JOIN course ON user.user_id = class.student_id AND class.course_id = course.course_id WHERE user.user_id = '$_SESSION[user_id]'");*/
+	$stmt=$mysqli->query("SELECT * FROM user JOIN class JOIN course ON user.user_id = class.student_id AND class.course_id = course.course_id WHERE user.user_id = '$_SESSION[user_id]'");
 
 ?>
 <!doctype html>
@@ -101,6 +101,8 @@
 		
 			<div class="tableStyle">
 				<?php
+				$stmt= $mysqli->query("SELECT * FROM course WHERE professor_id = " .$_SESSION['user_id']);
+				
 				/**fetchCourseRows
 			   * this if, while loop takes the query above for
 			   * the student's classes
@@ -181,6 +183,7 @@
 	
 			<div class="basicStyle">
 				<h1>You are a student</h1>
+				<h1>Courses</h1>
 					<div class = "tableStyle">
 						<!--
 						<div class = "tableContainer">

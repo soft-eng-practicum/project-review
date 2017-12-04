@@ -40,9 +40,10 @@
 	
 	
 	
-	<?php if($_SESSION['s_code']==5||$_SESSION['s_code']==3){?>
+	<?php if($_SESSION['s_code']==5 /*||$_SESSION['s_code']==3*/){?>
 	<div class="basicStyle">
 	<h1>You are a student</h1>
+	<h1>Projects</h1>
 	
 	<div class="tableStyle">
 	<?php
