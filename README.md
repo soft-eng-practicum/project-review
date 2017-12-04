@@ -27,3 +27,26 @@
 	* Documentation Lead
 * Norman Soucie
 	* Code architecture/Lead programmer
+
+### Features Implemented
+* Login
+	* Allows secure log-in
+	* Passwords are encrypted inside the database
+	* Help button on log-in page linking to FAQ
+* Admin
+	* Add/remove course
+	* Add/remove professor
+* Professor
+	* Add/remove course
+	* Add/remove student
+	* Import CSV file to add student(s)
+	* Add/remove project
+	* View submissions and reviews
+* Student
+	* View courses
+	* Submit project link
+	* Review other students' projects
+	
+### Future Features
+* Student
+	* Feature to show student their number of remaining reviews
