@@ -28,6 +28,12 @@
 * Norman Soucie
 	* Code architecture/Lead programmer
 
+### Screencast
+* https://youtu.be/Pn5CEHVvSYk
+
+### Website Link
+* http://souciernd.com/ProjectReview/
+	
 ### Features Implemented
 * Login
 	* Allows secure log-in
